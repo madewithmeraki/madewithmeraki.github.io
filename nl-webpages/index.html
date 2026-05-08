@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../images/favicon-def.png">
+  <link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/index.html" />
+  <link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/index.html" />
+  <meta name="description" content="Made With Meraki is een creatief marketingstudio gevestigd in Rotterdam. Wij helpen merken visuele verhalen te vertellen via fotografie, social media en creatieve richting.">
+  <title>Made With Meraki | Creatief Marketingstudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Noto+Serif+Display:ital,wdth,wght@0,100,400;1,62.5,100;1,100,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #F5F0E8; color: #0A0A0A; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; }
+    button { cursor: pointer; }
+
+    /* ─── CSS VARS ───────────────────────────────────────────── */
+    :root {
+      --cream: #F5F0E8;
+      --red:   #8B1A1A;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+    }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.from-left  { transform: translateX(-60px); }
+    .reveal.from-right { transform: translateX(60px); }
+    .reveal.visible    { opacity: 1; transform: translate(0); }
+    .d1 { transition-delay: .10s; }
+    .d2 { transition-delay: .20s; }
+    .d3 { transition-delay: .30s; }
+    .d4 { transition-delay: .40s; }
+    .d5 { transition-delay: .55s; }
+
+    /* ─── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .15em;
+      padding: .9rem 2.4rem;
+      border: none;
+      transition: background .3s, transform .3s, box-shadow .3s;
+    }
+    .btn-red   { background: var(--red); color: var(--cream); }
+    .btn-red:hover { background: var(--black); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(139,26,26,.3); }
+    .btn-outline { background: transparent; color: var(--cream); border: 1.5px solid rgba(245,240,232,.5); }
+    .btn-outline:hover { background: var(--cream); color: var(--black); }
+
+    /* ═══════════════════════════════════════════════════════════
+       1. NAVBAR
+    ═══════════════════════════════════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: #FFFFFF;
+      border-bottom: 1px solid rgba(17,17,17,.08);
+      height: 50px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: 0 2px 30px rgba(17,17,17,.08); }
+
+    .nav-logo {
+      display: flex; align-items: baseline; line-height: 1;
+      color: #8f0d0d;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 30px; letter-spacing: .02em;
+      text-decoration: none;
+    }
+    .nav-logo .logo-plain { font-style: italic; font-weight: 400; }
+    .nav-logo .logo-bold  { font-weight: 700; font-style: normal; }
+
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 15px; font-weight: 400; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--black);
+      position: relative; transition: color .3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--red); transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Dropdown */
+    .has-drop { position: relative; }
+    .has-drop > a::after { display: none; }
+    .has-drop > a .arrow {
+      display: inline-block; margin-left: 4px; font-size: .6rem;
+      transition: transform .3s;
+    }
+    .has-drop:hover > a .arrow { transform: rotate(180deg); }
+
+    .dropdown {
+      position: absolute; top: calc(100% + 18px); left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--black); min-width: 210px;
+      padding: .6rem 0;
+      opacity: 0; pointer-events: none;
+      transition: all .3s cubic-bezier(.16,1,.3,1);
+      transition-delay: .15s;
+    }
+    .has-drop:hover .dropdown { transition-delay: 0s; }
+    .dropdown::before {
+      content: ''; position: absolute; top: -18px; left: -10px; right: -10px;
+      height: 18px; background: transparent;
+    }
+    .dropdown::after {
+      content: ''; position: absolute; top: -5px; left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent; border-bottom-color: var(--black);
+      border-top: none;
+    }
+    .has-drop:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .dropdown a {
+      display: block; padding: .55rem 1.4rem;
+      color: var(--cream) !important; font-size: .78rem;
+      letter-spacing: .08em; transition: background .2s, padding-left .2s;
+    }
+    .dropdown a::after { display: none !important; }
+    .dropdown a:hover { background: var(--red); padding-left: 2rem; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 26px; height: 3px; background: var(--red); border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      position: fixed; top: 50px; left: 0; right: 0; z-index: 899;
+      background: var(--cream); border-bottom: 1px solid rgba(17,17,17,.1);
+      padding: 1.5rem 5% 2rem;
+      transform: translateY(-110%); opacity: 0;
+      transition: all .4s cubic-bezier(.16,1,.3,1);
+    }
+    .mobile-nav.open { transform: translateY(0); opacity: 1; }
+    .mobile-nav ul { list-style: none; }
+    .mobile-nav ul li a {
+      display: block; font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem; letter-spacing: .06em; color: var(--black);
+      padding: .35rem 0; border-bottom: 1px solid rgba(17,17,17,.07);
+      transition: color .2s, padding-left .2s;
+    }
+    .mobile-nav ul li a:hover { color: var(--red); padding-left: .8rem; }
+    .mobile-nav .m-sub { padding: .3rem 0 .3rem 1rem; }
+    .mobile-nav .m-sub a {
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: .85rem !important; letter-spacing: .1em !important;
+      font-weight: 500; border: none !important; color: rgba(17,17,17,.5) !important;
+      padding: .25rem 0 !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       2b. HERO ALT
+    ═══════════════════════════════════════════════════════════ */
+    .hero-alt {
+      background: #DEDAD2;
+      height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding-top: 72px;
+      box-sizing: border-box;
+    }
+    .hero-alt-wrapper {
+      width: 80%; max-width: 1100px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      position: relative;
+    }
+    .hero-alt-title-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%;
+      transform: translateY(-60%);
+      text-align: center;
+      z-index: 10;
+      pointer-events: none;
+      overflow: hidden;
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(60px, 9vw, 110px);
+      line-height: 1;
+      letter-spacing: .08em;
+      color: #8f0d0d;
+      white-space: nowrap;
+    }
+    .hero-alt-title-overlay .t-plain { font-style: italic; font-weight: 400; }
+    .hero-alt-title-overlay .t-bold  { font-style: normal; font-weight: 800; }
+    .hero-alt-card {
+      width: 100%;
+      height: 68vh;
+      background: #F5F2EC;
+      box-shadow: 0px 8px 32px rgba(0,0,0,0.18), 0px 2px 8px rgba(0,0,0,0.10);
+      border: 0.5px solid rgba(0,0,0,0.08);
+      transform: rotate(-0.3deg);
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .hero-alt-img {
+      background: #c8c8c4;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-alt-below {
+      width: 100%; margin-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hero-alt-scroll-hint {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-alt-scroll-line {
+      width: 35px; height: 1px;
+      background: #f6f859; flex-shrink: 0;
+    }
+    .hero-alt-scroll-text {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: #111111;
+      letter-spacing: 3px; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    /* Carousel */
+    .hero-alt-carousel { position: relative; width: 100%; height: 100%; }
+    .hero-alt-slide {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity .6s ease;
+      background: #c8c8c4;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-alt-slide.active { opacity: 1; }
+    .hero-alt-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-alt-slide-num {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; color: rgba(255,255,255,.45);
+      letter-spacing: 2px; user-select: none;
+    }
+    .hero-alt-dots {
+      position: absolute; bottom: 16px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 8px; z-index: 2;
+    }
+    .hero-alt-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      border: none; cursor: pointer; padding: 0;
+      transition: background .3s;
+    }
+    .hero-alt-dot.active { background: #FFFFFF; }
+    .hero-alt-content {
+      background: #F5F2EC;
+      padding: 0 60px 0;
+      display: flex; flex-direction: column;
+      align-items: center;
+    }
+    .hero-alt-top {
+      padding-top: 40px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .hero-alt-welcome-bottom {
+      margin-top: auto;
+      padding-bottom: 32px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px;
+    }
+    .hero-alt-counter {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: #8f0d0d; letter-spacing: 3px;
+      text-align: center;
+    }
+    .hero-alt-eyebrow {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: #8f0d0d; letter-spacing: 3px;
+      text-transform: uppercase; margin: 0;
+    }
+    .hero-alt-line {
+      width: 40px; height: 1px;
+      background: #8f0d0d;
+      margin: 10px 0 0;
+    }
+    .hero-alt-texts {
+      margin-top: 40px;
+      padding-top: 40px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .hero-alt-body {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: #8f0d0d; text-transform: uppercase;
+      line-height: 1.6; text-align: center;
+      max-width: 320px; margin: 0;
+    }
+    .hero-alt-cta {
+      display: inline-block;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 400;
+      color: #111111; text-decoration: none;
+      background: #f6f859;
+      padding: 16px 32px; border-radius: 25px;
+      transition: opacity .2s;
+    }
+    .hero-alt-cta:hover { opacity: .8; }
+
+    @media (max-width: 768px) {
+      .hero-alt-wrapper { width: 95%; }
+      .hero-alt-card { grid-template-columns: 1fr; height: auto; }
+      .hero-alt-img { height: 40vh; }
+      .hero-alt-content { padding: 0 24px 24px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       3. EXPAND CREATIVE BOUNDARIES
+    ═══════════════════════════════════════════════════════════ */
+    .expand {
+      background: #FFFFFF;
+      position: relative; overflow: hidden;
+      min-height: 750px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 7rem 0;
+    }
+
+    /* Left image — absolute, 150px from left, 200px from bottom */
+    .expand-left-img {
+      position: absolute; left: 150px; bottom: 200px;
+      width: 188px; height: 225px;
+      overflow: hidden; z-index: 1;
+      box-shadow: 3px 6px 22px rgba(0,0,0,.13);
+    }
+    .expand-left-img img { transition: transform .6s ease; }
+    .expand-left-img:hover img { transform: scale(1.05); }
+
+    /* Middle column — centered text */
+    .expand-middle {
+      position: relative; z-index: 2;
+      text-align: center;
+      max-width: max-content;
+      padding: 0 1rem;
+    }
+    .expand-h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 110px; font-weight: 400;
+      line-height: 1.08; letter-spacing: .06em;
+      color: #111111; text-align: center;
+      margin-bottom: 2.2rem;
+      white-space: nowrap;
+    }
+    .expand-h2 .si {
+      font-family: 'Noto Serif Display', serif;
+      font-style: italic; font-weight: 400;
+      font-size: 100px; color: #111111;
+      letter-spacing: 0;
+      display: block;
+      margin-top: -10px;
+    }
+    .expand-text {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .expand-text p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 700;
+      line-height: 1.75; color: #111111;
+      text-align: center; text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .expand-text p:last-child { margin-bottom: 0; }
+
+    /* Right images wrapper */
+    .expand-right {
+      position: absolute; right: 100px;
+      top: 50%; transform: translateY(-50%);
+      width: 225px; height: 350px;
+      z-index: 1;
+    }
+    .expand-ri-large {
+      position: absolute; left: 0; top: 100px;
+      width: 200px; height: 250px;
+      overflow: hidden; z-index: 1;
+      box-shadow: 3px 6px 22px rgba(0,0,0,.13);
+    }
+    .expand-ri-large img { transition: transform .6s ease; }
+    .expand-ri-large:hover img { transform: scale(1.05); }
+
+    .expand-ri-small {
+      position: absolute; left: 100px; top: 0;
+      width: 125px; height: 150px;
+      overflow: hidden; z-index: 2;
+      box-shadow: 3px 6px 22px rgba(0,0,0,.13);
+    }
+    .expand-ri-small img { transition: transform .6s ease; }
+    .expand-ri-small:hover img { transform: scale(1.05); }
+
+    /* ═══════════════════════════════════════════════════════════
+       4. SERVICES
+    ═══════════════════════════════════════════════════════════ */
+    .services { background: #8f0d0d; padding: 3rem 5%; min-height: 750px; }
+
+    .services-header { text-align: center; margin-bottom: 1.5rem; }
+    .services-h2 {
+      display: flex; align-items: baseline; justify-content: center; gap: 0.35em;
+      line-height: 1.08;
+    }
+    .services-h2 .si {
+      font-family: 'Noto Serif Display', serif; font-style: italic;
+      font-weight: 400; font-size: 130px;
+      color: #FFFFFF;
+    }
+    .services-h2 .sv {
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+      font-size: 130px;
+      color: #FFFFFF; letter-spacing: .06em;
+    }
+
+    .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.4rem; }
+
+    .scard-wrap { position: relative; text-decoration: none; display: block; }
+    .scard {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4; cursor: pointer;
+    }
+    .scard img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .65s cubic-bezier(.16,1,.3,1);
+    }
+    .scard:hover img { transform: scale(1.09); }
+    .scard-label {
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400; font-size: 25px;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: #FFFFFF;
+      white-space: nowrap; overflow: hidden;
+      height: 2.8rem; line-height: 2.8rem; padding: 0;
+      margin-top: -1.4rem;
+      position: relative; z-index: 1;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       4b. SERVICES OVERVIEW
+    ═══════════════════════════════════════════════════════════ */
+    .sov {
+      background: #FFFFFF;
+      padding: 0 5% 40px;
+    }
+
+    .sov-unified {
+      display: grid;
+      grid-template-columns: max-content max-content 1fr;
+      column-gap: 60px;
+      row-gap: 40px;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+    .sov-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px; font-weight: 300;
+      color: #8f0d0d; text-align: left;
+      letter-spacing: .04em;
+    }
+    .sov-btn {
+      display: inline-block;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 400;
+      color: #0A0A0A; background: #f6f859;
+      border-radius: 25px; padding: 14px 32px;
+      border: none; text-decoration: none;
+      transition: background .3s, transform .2s;
+      cursor: pointer;
+      justify-self: end;
+    }
+    .sov-btn:hover { background: #e8dc3a; transform: translateY(-1px); }
+
+    .sov-col { padding-right: 50px; }
+    .sov-col p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px; font-weight: 400;
+      color: #0A0A0A; text-align: left;
+      margin-bottom: 2px; line-height: 1.2;
+    }
+    .sov-col p:last-child { margin-bottom: 0; }
+
+    /* CTA text link */
+    .cta-text-link {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px; font-weight: 400;
+      color: #8f0d0d; text-decoration: none;
+      letter-spacing: .06em; display: inline-block;
+      transition: opacity .2s;
+    }
+    .cta-text-link:hover { opacity: .7; }
+
+    /* CTA solid button */
+    .cta-btn-solid {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 700;
+      color: #FFFFFF; background: #8f0d0d;
+      text-decoration: none; display: inline-block;
+      padding: 14px 28px; border-radius: 0;
+      margin-top: 32px;
+      transition: opacity .2s;
+    }
+    .cta-btn-solid:hover { opacity: .85; }
+
+    /* Full-width image */
+    .sov-image {
+      width: 100%; height: 350px;
+      overflow: hidden; margin-bottom: 40px;
+    }
+    .sov-image img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform .6s ease;
+    }
+    .sov-image:hover img { transform: scale(1.03); }
+
+    /* ═══════════════════════════════════════════════════════════
+       5. MARQUEE
+    ═══════════════════════════════════════════════════════════ */
+    .marquee-bar {
+      background: #f6f859; overflow: hidden;
+      padding: 1.3rem 0;
+    }
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: marquee 36s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .m-item { display: flex; align-items: center; gap: 2rem; padding-right: 2rem; white-space: nowrap; }
+    .m-word { font-family: 'Roboto Mono', monospace; font-size: 1rem; font-weight: 300; letter-spacing: .06em; color: #111111; }
+    .m-dot { width: 5px; height: 5px; background: rgba(17,17,17,.4); border-radius: 50%; flex-shrink: 0; }
+
+    .red-strip { height: 20px; background: #8f0d0d; }
+
+    /* ═══════════════════════════════════════════════════════════
+       6. ART DIRECTION
+    ═══════════════════════════════════════════════════════════ */
+    .artdir {
+      background: #8f0d0d;
+      min-height: 750px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .artdir-img {
+      position: relative; overflow: hidden;
+      min-height: 0;
+    }
+    .artdir-img img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .artdir-img:hover img { transform: scale(1.04); }
+
+    .artdir-content {
+      background: #8f0d0d;
+      padding: 6rem 5% 6rem 5%;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .artdir-h2 { margin-bottom: 2.8rem; line-height: 1.08; text-align: center; }
+    .artdir-line1 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400; font-size: 80px;
+      color: #FFFFFF; text-transform: uppercase;
+      letter-spacing: .06em;
+      display: block; padding-left: 0;
+    }
+    .artdir-line2 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400; font-size: 75px;
+      color: #FFFFFF; text-transform: uppercase;
+      letter-spacing: .06em;
+      display: block; padding-left: 0;
+    }
+    .artdir-line3 {
+      font-family: 'Noto Serif Display', serif;
+      font-style: italic; font-weight: 400; font-size: 75px;
+      color: #FFFFFF;
+      display: block; padding-left: 0;
+    }
+
+    .artdir-text { text-align: center; padding: 0 2.5rem; max-width: 480px; margin: 0 auto; }
+    .artdir-text p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 700;
+      line-height: 1.8; color: #FFFFFF;
+      text-transform: uppercase; text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .artdir-text p:last-child { margin-bottom: 0; }
+
+    /* ═══════════════════════════════════════════════════════════
+       7. ELEVATING
+    ═══════════════════════════════════════════════════════════ */
+    .elevating {
+      background: #d3d3d3;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .elevating-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: calc(6rem - 10px) 4rem calc(6rem - 10px) calc(5% + 14px);
+      overflow: visible; position: relative; z-index: 1;
+    }
+    .elevating-h2 { line-height: 1.08; }
+    .el-dm {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400; font-size: 138px;
+      color: #f6f859; display: block;
+      letter-spacing: .06em; white-space: nowrap;
+    }
+    .el-serif {
+      font-family: 'Noto Serif Display', serif;
+      font-style: italic; font-weight: 400; font-size: 161px;
+      color: #f6f859; display: block;
+    }
+
+    .elevating-right {
+      display: flex; align-items: center; justify-content: center;
+      padding: calc(4rem - 10px) 5% calc(4rem - 10px) 2rem;
+      position: relative; z-index: 2;
+    }
+    .elevating-right img {
+      max-height: 90vh; width: auto;
+      object-fit: contain; display: block;
+      transform: translateX(-100px);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       8. PORTFOLIO
+    ═══════════════════════════════════════════════════════════ */
+    .portfolio {
+      background: #FFFFFF;
+      position: relative; overflow: hidden;
+      min-height: 770px;
+      padding: 3rem 0 0 65px;
+    }
+
+    .portfolio-scroll-hint {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 25px; font-weight: 300;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: #111111; text-align: center;
+      position: relative; z-index: 2; margin-bottom: 0;
+    }
+
+    .portfolio-title-vert {
+      position: absolute; left: -164px; top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: center center;
+      white-space: nowrap; z-index: 3;
+      font-size: 75px; line-height: 1;
+    }
+    .pv-serif {
+      font-family: 'Noto Serif Display', serif;
+      font-style: italic; font-weight: 400; color: #8f0d0d;
+    }
+    .pv-sans { font-family: 'DM Sans', sans-serif; font-weight: 700; color: #8f0d0d; letter-spacing: .06em; }
+
+    .portfolio-collage { position: relative; min-height: 600px; }
+
+    .pcol-img { position: absolute; }
+    .pcol-img img { display: block; background: transparent; width: 280px; height: auto; }
+
+    .pfolder { position: absolute; cursor: pointer; display: block; }
+    .pfolder img {
+      width: 120px; display: block;
+      transition: transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .pfolder:hover img { transform: scale(1.1); }
+
+    /* ═══════════════════════════════════════════════════════════
+       9. ABOUT
+    ═══════════════════════════════════════════════════════════ */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .about-left {
+      background: #8f0d0d;
+      padding: 80px 60px 60px;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+
+    .about-names {
+      position: absolute; top: 20px; left: 60px; right: 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 5;
+    }
+    .about-names a {
+      font-family: 'Helvetica World', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-style: italic; font-weight: 400;
+      font-size: 15px; color: #FFFFFF;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+
+    .about-title {
+      font-family: 'Noto Serif Display', serif;
+      font-style: italic; font-weight: 100;
+      font-stretch: extra-condensed;
+      font-variation-settings: 'wdth' 62.5, 'wght' 100;
+      font-size: 110px; color: #f6f859;
+      line-height: 1.1; text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #about-image-placeholder {
+      width: 340px; height: 420px;
+      background: #c0c0c0;
+      margin: 0 auto 30px;
+      flex-shrink: 0;
+    }
+
+    .about-left-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: #f6f859; line-height: 1.8;
+      text-align: justify; text-transform: uppercase;
+    }
+
+    .about-right {
+      background: #FFFFFF;
+      padding: 60px 85px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .about-right-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: #0A0A0A; line-height: 1.8;
+      text-align: justify;
+      text-align: center; text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .about-photos { display: flex; gap: 20px; }
+    .about-photo-item {
+      width: 47%; aspect-ratio: 1 / 1;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .about-photo-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .6s ease;
+    }
+    .about-photo-item:hover img { transform: scale(1.04); }
+
+    /* ═══════════════════════════════════════════════════════════
+       10. CONTACT
+    ═══════════════════════════════════════════════════════════ */
+    .contact {
+      background: #ececeb;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 750px;
+    }
+
+    .contact-left {
+      padding: 30px 60px 0;
+      display: flex; flex-direction: column;
+    }
+    .contact-h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 80px; font-weight: 400;
+      line-height: 1.05; color: #8f0d0d;
+      letter-spacing: .06em;
+      text-align: left; margin-bottom: 20px;
+    }
+    .contact-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 400;
+      color: #0A0A0A; line-height: 1.8;
+      text-transform: none; text-align: left;
+      max-width: 380px; margin-bottom: 60px;
+    }
+
+    .contact-collage {
+      position: relative; flex: 1; min-height: 380px;
+    }
+    .contact-photo-sm {
+      position: absolute; left: 0; top: 20px;
+      width: 158px; height: 200px;
+      overflow: hidden;
+      box-shadow: 3px 8px 24px rgba(0,0,0,.15);
+    }
+    .contact-photo-lg {
+      position: absolute; right: 0; bottom: 0;
+      width: 210px; height: 240px;
+      overflow: hidden;
+      box-shadow: 3px 8px 24px rgba(0,0,0,.15);
+    }
+    .contact-photo-sm img, .contact-photo-lg img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .6s ease;
+    }
+    .contact-photo-sm:hover img, .contact-photo-lg:hover img { transform: scale(1.05); }
+
+    .contact-right {
+      background: #ececeb;
+      padding: 30px 60px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .cform { display: flex; flex-direction: column; gap: 2rem; }
+    .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .cform-row.full { grid-template-columns: 1fr; }
+
+    .fg { display: flex; flex-direction: column; gap: .5rem; }
+    .fg label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; color: #0A0A0A;
+      letter-spacing: 1.5px;
+    }
+    .fg input, .fg textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px; font-weight: 400;
+      color: #0A0A0A; background: transparent;
+      border: none; border-bottom: 1px solid #aaa;
+      padding: .7rem 0; outline: none;
+      transition: border-color .3s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .fg input:-webkit-autofill,
+    .fg input:-webkit-autofill:hover,
+    .fg input:-webkit-autofill:focus,
+    .fg textarea:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px #d3d3d3 inset;
+      -webkit-text-fill-color: #0A0A0A;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+    .fg input:focus, .fg textarea:focus { border-bottom-color: #8f0d0d; }
+    .fg input::placeholder, .fg textarea::placeholder { color: #bbb; }
+    .fg textarea { resize: none; height: 150px; }
+
+    .service-dropdown { }
+    .service-dropdown-trigger {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1px solid #aaa;
+      padding: .7rem 0; outline: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px; font-weight: 400; color: #bbb;
+      text-align: left; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: border-color .3s;
+    }
+    .service-dropdown-trigger.has-value { color: #0A0A0A; }
+    .service-dropdown-trigger:focus { border-bottom-color: #8f0d0d; }
+    .service-dropdown.open .service-dropdown-trigger { border-bottom-color: #aaa; }
+    .service-dropdown-arrow {
+      font-size: 11px; color: #888;
+      transition: transform .25s; flex-shrink: 0; margin-left: 8px;
+    }
+    .service-dropdown.open .service-dropdown-arrow { transform: rotate(180deg); }
+
+    .service-dropdown-panel {
+      background: #f6f859;
+      border: 1px solid #aaa; border-top: none;
+      padding: 14px;
+      max-height: 260px; overflow-y: scroll;
+      display: none;
+      position: relative;
+      scrollbar-width: thin;
+      scrollbar-color: #8f0d0d #f6f859;
+    }
+    .service-dropdown-panel::-webkit-scrollbar { -webkit-appearance: none; width: 8px; }
+    .service-dropdown-panel::-webkit-scrollbar-track { background: #f6f859; }
+    .service-dropdown-panel::-webkit-scrollbar-thumb { background: #8f0d0d; border-radius: 3px; min-height: 40px; }
+    .service-dropdown.open .service-dropdown-panel { display: block; }
+
+    .service-dropdown-panel-wrap { position: relative; }
+    .service-dropdown-panel-wrap::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, #f6f859);
+      pointer-events: none;
+      display: none;
+    }
+    .service-dropdown.open .service-dropdown-panel-wrap::after { display: block; }
+
+    .service-pills { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+    .service-pill { display: none; }
+    .service-pill + label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 400;
+      color: #0A0A0A; background: transparent;
+      border: none; border-radius: 0;
+      padding: 3px 0; cursor: pointer;
+      transition: color .15s;
+      user-select: none; line-height: 1.6;
+    }
+    .service-pill + label:hover { color: #8f0d0d; }
+    .service-pill:checked + label {
+      background: #8f0d0d; color: #FFFFFF;
+      border-radius: 20px; padding: 3px 10px;
+    }
+
+    .cform-foot {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      margin-top: 40px; padding-top: 20px;
+    }
+    .cform-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 400; color: #0A0A0A;
+    }
+    .cform-submit {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 400;
+      color: #111111; background: #f6f859;
+      border: none; border-radius: 25px;
+      padding: 16px 32px; cursor: pointer;
+      letter-spacing: .05em;
+      transition: opacity .2s;
+    }
+    .cform-submit:hover { opacity: .8; }
+    .cform-submit.sent { background: #f6f859; }
+
+    /* ═══════════════════════════════════════════════════════════
+       11. FOOTER
+    ═══════════════════════════════════════════════════════════ */
+    .footer-red { background: #8f0d0d; padding: 40px 60px; }
+    .footer-contact-info { margin-bottom: 20px; }
+    .footer-contact-info p {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: #FFFFFF; line-height: 1.8; text-transform: uppercase;
+    }
+    .footer-headline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 100px; font-weight: 400;
+      color: #FFFFFF; line-height: 1; letter-spacing: .06em;
+      margin-bottom: 40px; text-align: center;
+    }
+    .footer-cols {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      align-items: start;
+    }
+    .footer-nav-title {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 400;
+      color: #FFFFFF; margin-bottom: 12px;
+    }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { margin-bottom: 8px; }
+    .footer-nav-list a {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 400;
+      color: #FFFFFF; text-transform: uppercase;
+      transition: opacity .2s;
+    }
+    .footer-nav-list a:hover { opacity: 0.7; }
+    .footer-body-text {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: #FFFFFF; line-height: 1.8;
+      max-width: 380px; text-transform: uppercase;
+      text-align: justify;
+    }
+    .footer-explore { text-align: right; }
+    .footer-explore-title {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 400;
+      color: #FFFFFF; margin-bottom: 12px; text-align: right;
+    }
+    .footer-explore-list { list-style: none; }
+    .footer-explore-list li { margin-bottom: 8px; }
+    .footer-explore-list a {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px; font-weight: 400;
+      color: #FFFFFF; text-transform: uppercase;
+      display: block; text-align: right;
+      transition: opacity .2s;
+    }
+    .footer-explore-list a:hover { opacity: 0.7; }
+
+    .footer-photobar { display: flex; background: #0A0A0A; gap: 10px; padding: 10px 0; }
+    .footer-photobar-img { flex: 1; height: 220px; overflow: hidden; }
+    .footer-photobar-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .6s ease;
+    }
+    .footer-photobar-img:hover img { transform: scale(1.05); }
+
+    .footer-bar {
+      background: #0A0A0A; padding: 20px 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 10px;
+      align-items: center;
+    }
+    .footer-bar span {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: #FFFFFF; text-transform: uppercase;
+    }
+    .footer-bar-left  { grid-column: 1; }
+    .footer-bar-center { grid-column: 5; }
+    .footer-bar-right  { grid-column: 6; text-align: right; }
+    .footer-bar a { color: #FFFFFF; text-decoration: none; transition: opacity .2s; }
+    .footer-bar a:hover { opacity: 0.7; }
+
+    /* ─── CUSTOM CURSOR ─────────────────────────────────────── */
+    .cursor {
+      width: 8px; height: 8px; background: var(--red);
+      border-radius: 50%; position: fixed; pointer-events: none;
+      z-index: 9999; transform: translate(-50%,-50%);
+      transition: width .3s, height .3s, background .3s;
+      mix-blend-mode: normal;
+    }
+    .cursor.big {
+      width: 42px; height: 42px;
+      background: rgba(139,26,26,.12); border: 1px solid var(--red);
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────────────── */
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(17,17,17,.12), transparent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(4,1fr); }
+    }
+    @media (max-width: 768px) {
+      html, body { overflow-x: hidden !important; max-width: 100% !important; }
+      .nav { background: #FFFFFF !important; z-index: 9999 !important; width: 100% !important; box-sizing: border-box !important; left: 0 !important; right: 0 !important; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; flex-shrink: 0 !important; }
+      .hamburger span { background: #0A0A0A !important; width: 24px !important; height: 2px !important; border-radius: 0 !important; }
+      .nav-logo { font-size: clamp(14px, 5vw, 24px) !important; letter-spacing: .02em !important; }
+      .mobile-nav { background: #FFFF00 !important; }
+      .mobile-nav ul li a { font-family: 'Roboto Mono', monospace !important; text-transform: uppercase !important; }
+      .mobile-nav .m-sub a { font-family: 'Roboto Mono', monospace !important; text-transform: uppercase !important; display: block !important; }
+      .expand { min-height: auto; padding: 4rem 5%; }
+      .expand-left-img { display: none; }
+      .expand-right { display: none; }
+      .expand-middle { max-width: 100%; padding: 0; }
+      .expand-h2 { font-size: clamp(1.5rem, 9.5vw, 5rem) !important; }
+      .expand-h2 .si { font-size: clamp(1.5rem, 9.5vw, 5rem) !important; }
+      .services-grid { grid-template-columns: 1fr; }
+      .scard { aspect-ratio: 3/4; }
+      .sov { padding: 40px 5% 60px; }
+      .sov-unified { grid-template-columns: 1fr; column-gap: 0; row-gap: 1.5rem; }
+      .sov-btn { justify-self: start; }
+      .sov-col { padding-right: 0; }
+      .sov-image { height: 200px; }
+      .artdir { grid-template-columns: 1fr; min-height: auto; }
+      .artdir-img { min-height: 55vh; }
+      .artdir-content { padding: 4rem 5%; }
+      .artdir-line1 { font-size: 28px; padding-left: 0; text-align: center; }
+      .artdir-line2 { font-size: 28px; padding-left: 0; text-align: center; }
+      .artdir-line3 { font-size: 48px; padding-left: 0; text-align: center; }
+      .elevating { grid-template-columns: 1fr; min-height: auto; }
+      .elevating-left { order: 1; padding: 3rem 5% 1rem; padding-left: 90px; }
+      .elevating-right { order: 2; padding: 1rem 5% 2rem; margin-top: -50px; }
+      .elevating-right img { transform: none; width: 70%; max-height: 55vh; margin: 0 auto; display: block; }
+      .elevating > div:last-child { order: 3; }
+      .el-dm { font-size: clamp(3.2rem, 11vw, 6rem); }
+      .el-serif { font-size: clamp(3.6rem, 12vw, 7rem); }
+      .portfolio-grid { grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+      .about { grid-template-columns: 1fr; }
+      .about-left { padding: 40px 5%; }
+      .about-right { padding: 40px 5%; }
+      #about-image-placeholder { width: 100%; max-width: 340px; }
+      .about-photo-item { width: 100%; }
+      .contact { grid-template-columns: 1fr; }
+      .contact-left { padding: 40px 5%; }
+      .contact-right { padding: 40px 5%; }
+      .contact-collage { min-height: 280px; }
+      .cform-row { grid-template-columns: 1fr; }
+      .cform-foot { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+      .cform-submit { width: 100%; text-align: center; }
+      .footer-red { padding: 40px 20px; display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; row-gap: 1.5rem; }
+      .footer-contact-info { order: 5; width: 100%; margin-top: 1rem; margin-bottom: 0; }
+      .footer-headline { font-size: clamp(2.4rem, 10vw, 5rem); order: 2; width: 100%; margin-bottom: 0; }
+      .footer-cols { display: contents; }
+      .footer-cols > div:nth-child(2) { order: 1; width: 100%; }
+      .footer-cols > div:first-child { order: 3; flex: 0 0 50%; }
+      .footer-explore { order: 4; flex: 0 0 50%; text-align: right; }
+      .footer-explore-title { text-align: right; }
+      .footer-explore-list a { text-align: right; display: block; }
+      .footer-photobar-img { height: 100px; }
+      .footer-bar { grid-template-columns: 1fr; row-gap: 1rem; padding: 20px; }
+      .footer-bar-left, .footer-bar-center, .footer-bar-right { grid-column: 1; text-align: left; }
+      .portfolio { padding: 3rem 1rem 4rem; min-height: auto; display: flex; flex-direction: column; }
+      .portfolio > div:first-child { display: contents; }
+      .portfolio-scroll-hint { order: 0; }
+      .portfolio-title-vert { display: none; }
+      .portfolio-collage { min-height: auto; position: relative !important; order: 1; }
+      .portfolio .cta-text-link { order: 2; display: block !important; width: 100% !important; text-align: right !important; margin: 1.5rem 0 0; }
+      .pcol-img { position: static; display: inline-block; margin: .8rem; vertical-align: top; }
+      .pfolder { position: absolute !important; display: block !important; margin: 0 !important; }
+      .portfolio-collage > div:nth-child(3) { display: block; margin: 0.5rem auto; width: fit-content; margin-top: -300px; margin-left: 190px; }
+      .portfolio-collage > div:nth-child(3) img { width: 175px; }
+      .portfolio-collage > div:nth-child(4),
+      .portfolio-collage > div:nth-child(5) { display: none; }
+      .portfolio-collage > div:nth-child(6) { margin-top: 100px; }
+      .portfolio-collage > a:nth-child(7) { top: 5% !important; left: calc(60% + 30px) !important; transform: rotate(-6deg) !important; }
+      .portfolio-collage > a:nth-child(8) { top: calc(78% + 120px) !important; left: 5% !important; transform: rotate(5deg) !important; }
+      .portfolio-collage > a:nth-child(9) { top: 62% !important; left: 60% !important; transform: rotate(-4deg) !important; }
+      .portfolio-collage > a:nth-child(10) { top: 38% !important; left: 5% !important; transform: translateY(-60px) rotate(8deg) !important; }
+
+      /* ── Hero title overlay ── */
+      .hero-alt-title-overlay {
+        white-space: nowrap;
+        font-size: clamp(24px, 8.5vw, 90px);
+        letter-spacing: .03em;
+        padding: 0 2%;
+        transform: translateY(-50%);
+      }
+      .hero-alt { overflow: hidden; }
+
+      /* ── Hero below: stack button on top, scroll hint bottom-left ── */
+      .hero-alt-below {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .hero-alt-scroll-hint { align-self: flex-start; }
+
+      /* ── Global images ── */
+      img { max-width: 100%; }
+
+      /* ── Services overview labels ── */
+      .sov-label { font-size: 13px; }
+      .sov-col p { font-size: 14px; }
+      .sov-btn { justify-self: stretch; text-align: center; order: 10; }
+
+      /* ── Services section ── */
+      .services { min-height: auto; padding: 2rem 5%; }
+      .services-h2 .si { font-size: clamp(44px, 13vw, 80px); }
+      .services-h2 .sv { font-size: clamp(44px, 13vw, 80px); }
+      .services-grid { grid-template-columns: 1fr; }
+      .scard-label { white-space: normal; overflow: visible; height: auto; line-height: 1.4; margin-top: -1rem; padding: 4px 0; font-size: 18px; }
+
+      /* ── Marquee text size ── */
+      .m-word { font-size: .85rem; }
+
+      /* ── Contact heading ── */
+      .contact-h2 { font-size: clamp(2rem, 9vw, 3.5rem); }
+      .contact-sub { font-size: 13px; }
+
+      /* ── Footer hook text ── */
+      .footer-hook-line1 { padding-left: 20px !important; font-size: clamp(2rem, 9vw, 4rem); }
+      .footer-hook-line2 { padding-right: 20px !important; font-size: clamp(2.2rem, 10vw, 4.5rem); }
+      .footer-connect-btn { width: 100%; text-align: center; box-sizing: border-box; }
+    }
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-alt-title-overlay { font-size: clamp(20px, 8vw, 70px); }
+    }
+    .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 24px; font-family: 'Roboto Mono', monospace; font-size: 11px; letter-spacing: .1em; }
+    .lang-active { color: #8f0d0d; font-weight: 700; text-decoration: underline; }
+    .lang-sep { color: #8f0d0d; }
+    .lang-link { color: #8f0d0d; text-decoration: none; }
+    .lang-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+
+<!-- ════════════════════════════════════════════
+     1. NAVBAR
+════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="logo-plain">MADEWITH</span><span class="logo-bold">MERAKI.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">Over ons</a></li>
+    <li class="has-drop">
+      <a href="#services">Diensten <span class="arrow">▾</span></a>
+      <div class="dropdown">
+        <a href="creative-visuals.html">Creatief &amp; Visuals</a>
+        <a href="photography.html">Fotografie</a>
+        <a href="social-media.html">Social Media</a>
+        <a href="marketing.html">Growth Marketing</a>
+      </div>
+    </li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <div class="lang-switch">
+      <a href="../index.html" class="lang-link">EN</a>
+      <span class="lang-sep">|</span>
+      <span class="lang-active">NL</span>
+    </div>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Menu openen">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav" id="mnav">
+  <ul>
+    <li><a href="about.html"   onclick="closeMob()">Over ons</a></li>
+    <li><a href="#services"    onclick="closeMob()">Diensten</a></li>
+    <div class="m-sub">
+      <a href="creative-visuals.html" onclick="closeMob()">Creatief &amp; Visuals</a>
+      <a href="photography.html"  onclick="closeMob()">Fotografie</a>
+      <a href="social-media.html" onclick="closeMob()">Social Media</a>
+      <a href="marketing.html"    onclick="closeMob()">Growth Marketing</a>
+    </div>
+    <li><a href="#portfolio" onclick="closeMob()">Portfolio</a></li>
+    <li><a href="#contact"   onclick="closeMob()">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════
+     2b. HERO ALT
+════════════════════════════════════════════ -->
+<section class="hero-alt" id="hero-alt">
+  <div class="hero-alt-wrapper">
+
+    <!-- Title overlay: half above card, half over it -->
+    <div class="hero-alt-title-overlay" aria-hidden="true">
+      <span class="t-plain">MADE WITH </span><span class="t-bold">MERAKI.</span>
+    </div>
+
+    <div class="hero-alt-card">
+
+      <!-- Links: carrousel -->
+      <div class="hero-alt-img" id="hero-alt-image">
+        <div class="hero-alt-carousel">
+          <div class="hero-alt-slide active"><span class="hero-alt-slide-num">1 / 6</span></div>
+          <div class="hero-alt-slide"><span class="hero-alt-slide-num">2 / 6</span></div>
+          <div class="hero-alt-slide"><span class="hero-alt-slide-num">3 / 6</span></div>
+          <div class="hero-alt-slide"><span class="hero-alt-slide-num">4 / 6</span></div>
+          <div class="hero-alt-slide"><span class="hero-alt-slide-num">5 / 6</span></div>
+          <div class="hero-alt-slide"><span class="hero-alt-slide-num">6 / 6</span></div>
+          <div class="hero-alt-dots">
+            <button class="hero-alt-dot active" aria-label="Slide 1"></button>
+            <button class="hero-alt-dot" aria-label="Slide 2"></button>
+            <button class="hero-alt-dot" aria-label="Slide 3"></button>
+            <button class="hero-alt-dot" aria-label="Slide 4"></button>
+            <button class="hero-alt-dot" aria-label="Slide 5"></button>
+            <button class="hero-alt-dot" aria-label="Slide 6"></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Rechts: content -->
+      <div class="hero-alt-content">
+
+        <!-- Bodytekst, gecentreerd -->
+        <div class="hero-alt-texts">
+          <p class="hero-alt-body reveal d1">Dit is jouw nieuwe creatieve marketingstudio. Begonnen vanuit een gedeelde passie voor visual storytelling, en de wens om merken te bouwen die er écht toe doen. Of je nu extra creativiteit, fotografie of Growth Marketing zoekt; wij brengen strategie en een mooie intentie samen in elk project. Altijd met een samenkomst van creativiteit en strategie. Waar jouw merkverhaal vorm krijgt.</p>
+        </div>
+
+        <!-- Onder: lijn + slideteller -->
+        <div class="hero-alt-welcome-bottom">
+          <div class="hero-alt-line"></div>
+          <p class="hero-alt-counter" id="heroAltCounter">01 / 06</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Onder de kaart: scroll-hint links, knop rechts -->
+    <div class="hero-alt-below">
+      <div class="hero-alt-scroll-hint">
+        <span class="hero-alt-scroll-line"></span>
+        <span class="hero-alt-scroll-text">SCROLL OM TE ONTDEKKEN</span>
+      </div>
+      <a href="#services" class="hero-alt-cta reveal">BEKIJK DIENSTEN →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     3. EXPAND CREATIVE BOUNDARIES
+════════════════════════════════════════════ -->
+<section class="expand" id="expand">
+
+  <!-- Kolom 1: Linker afbeelding -->
+  <div class="expand-left-img reveal from-left">
+    <img src="../images/home-expand-4.jpeg" alt="Creatief werk">
+  </div>
+
+  <!-- Kolom 2: Koptekst + bodytekst -->
+  <div class="expand-middle">
+    <h2 class="expand-h2 reveal">
+      CREATIEVE GRENZEN<br>
+      <span class="si">opzoeken</span>
+    </h2>
+    <div class="expand-text reveal d1">
+      <p>In een wereld vol met content heeft jouw merk meer nodig dan leuke afbeeldingen. Het heeft een visuele taal nodig die direct raakt; die spreekt tot wat jouw publiek wil, voelt en gelooft. Door echt te begrijpen wat resoneert, maken wij content die jouw merkverhaal versterkt.</p>
+      <p>Elke afbeelding, elke kleurkeuze, elke compositie is intentioneel. Alles wat je met aandacht maakt, groeit. Daarom verbinden wij creativiteit met strategie; zodat bewuste merken opvallen waar het telt.</p>
+      <a href="about.html" class="cta-text-link reveal d2">Discover our approach →</a>
+    </div>
+  </div>
+
+  <!-- Kolom 3: Rechter twee overlappende afbeeldingen -->
+  <div class="expand-right" aria-hidden="true">
+    <div class="expand-ri-large reveal from-right d1">
+      <img src="../images/home-expand-2.jpg?v=2" alt="">
+    </div>
+    <div class="expand-ri-small reveal from-right d2">
+      <img src="../images/home-expand-3.jpg?v=2" alt="">
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════
+     4. DIENSTEN
+════════════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="services-header">
+    <h2 class="services-h2 reveal">
+      <span class="si">de</span>
+      <span class="sv">DIENSTEN</span>
+    </h2>
+  </div>
+  <div class="services-grid">
+    <a href="creative-visuals.html" class="scard-wrap reveal d1">
+      <div class="scard">
+        <img src="../images/home-services-1.jpg" alt="Creatief &amp; Visuals">
+      </div>
+      <p class="scard-label">CREATIEF &amp; VISUALS</p>
+    </a>
+    <a href="photography.html" class="scard-wrap reveal d2">
+      <div class="scard">
+        <img src="../images/home-services-2.jpg" alt="Fotografie">
+      </div>
+      <p class="scard-label">FOTOGRAFIE</p>
+    </a>
+    <a href="social-media.html" class="scard-wrap reveal d3">
+      <div class="scard">
+        <img src="../images/home-services-5.jpg" alt="Social Media">
+      </div>
+      <p class="scard-label">SOCIAL MEDIA</p>
+    </a>
+    <a href="marketing.html" class="scard-wrap reveal d4">
+      <div class="scard">
+        <img src="../images/home-services-4.jpg" alt="Growth Marketing">
+      </div>
+      <p class="scard-label">GROWTH MARKETING</p>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     5. MARQUEE
+════════════════════════════════════════════ -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-track">
+    <!-- Kopie 1 -->
+    <div class="m-item">
+      <span class="m-word">CAMPAGNES</span><span class="m-dot"></span>
+      <span class="m-word">VISUELE MERKSTRATEGIE</span><span class="m-dot"></span>
+      <span class="m-word">MERKRITUEEL ONTWERP</span><span class="m-dot"></span>
+      <span class="m-word">SOCIAL MEDIA PAKKETTEN</span><span class="m-dot"></span>
+      <span class="m-word">FOTOGRAFIE PAKKETTEN</span><span class="m-dot"></span>
+      <span class="m-word">E-MAILMARKETING</span><span class="m-dot"></span>
+    </div>
+    <!-- Kopie 2 (naadloze lus) -->
+    <div class="m-item">
+      <span class="m-word">CAMPAGNES</span><span class="m-dot"></span>
+      <span class="m-word">VISUELE MERKSTRATEGIE</span><span class="m-dot"></span>
+      <span class="m-word">MERKRITUEEL ONTWERP</span><span class="m-dot"></span>
+      <span class="m-word">SOCIAL MEDIA PAKKETTEN</span><span class="m-dot"></span>
+      <span class="m-word">FOTOGRAFIE PAKKETTEN</span><span class="m-dot"></span>
+      <span class="m-word">E-MAILMARKETING</span><span class="m-dot"></span>
+    </div>
+  </div>
+</div>
+<div class="red-strip"></div>
+
+<!-- ════════════════════════════════════════════
+     5. MERKEN VERHEVEN
+════════════════════════════════════════════ -->
+<section class="elevating" id="elevating">
+
+  <!-- Linker kolom: koptekst -->
+  <div class="elevating-left">
+    <h2 class="elevating-h2">
+      <span class="el-dm reveal">BRANDS CREËREN</span>
+      <span class="el-serif reveal d1">met</span>
+      <span class="el-dm reveal d3">(VISIE)</span>
+    </h2>
+  </div>
+
+  <!-- Rechter kolom: booking afbeelding -->
+  <div class="elevating-right reveal from-right">
+    <img src="../booking-call-3.png" alt="Boek een gesprek">
+  </div>
+
+  <!-- Volledige breedte CTA -->
+  <div style="grid-column: 1 / -1; text-align: center; padding: 0 0 40px;">
+    <a href="https://calendly.com/mwmeraki-studio/30min" target="_blank" class="sov-btn reveal">BOEK EEN GRATIS GESPREK →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════
+     6. PORTFOLIO
+════════════════════════════════════════════ -->
+<section class="portfolio" id="portfolio">
+
+  <!-- Scroll-hint -->
+  <div style="padding-right: 65px;">
+    <p class="portfolio-scroll-hint" style="margin:0 0 8px 0; text-align:center;">SCROLL DOOR DE HOOGTEPUNTEN VAN DIT PORTFOLIO</p>
+    <a href="../portfolio.html" class="cta-text-link" style="display:block; text-align:right;">BEKIJK VOLLEDIG PORTFOLIO →</a>
+  </div>
+
+  <!-- Verticale (PORT)FOLIO titel — uiterst links -->
+  <div class="portfolio-title-vert">
+    <span class="pv-serif">(PORT)</span><span class="pv-sans">FOLIO</span>
+  </div>
+
+  <!-- Verspreid collage -->
+  <div class="portfolio-collage">
+
+    <!-- Foto's — rotatie &amp; tape ingebakken in PNGs -->
+    <div class="pcol-img reveal"    style="top:4%;  left:8%">  <img src="../portfolio1.png" alt="Portfolio 1"></div>
+    <div class="pcol-img reveal d1" style="top:46%; left:3%">  <img src="../portfolio2.png" alt="Portfolio 2"></div>
+    <div class="pcol-img reveal d2" style="top:20%; left:38%"> <img src="../portfolio3.png" alt="Portfolio 3"></div>
+    <div class="pcol-img reveal"    style="top:2%;  left:63%"> <img src="../portfolio4.png" alt="Portfolio 4"></div>
+    <div class="pcol-img reveal d1" style="top:48%; left:61%"> <img src="../portfolio5.png" alt="Portfolio 5"></div>
+    <div class="pcol-img reveal d2" style="top:69%; left:50%"> <img src="../portfolio6.png" alt="Portfolio 6"></div>
+
+    <!-- Mappictogrammen — verspreid tussen foto's -->
+    <a class="pfolder reveal d1" href="../portfolio.html" style="top:9%;  left:28%"><img src="../element_photography.png" alt="Fotografie"></a>
+    <a class="pfolder reveal d2" href="../portfolio.html" style="top:42%; left:19%"><img src="../element_creative.png"     alt="Creatief"></a>
+    <a class="pfolder reveal d1" href="../portfolio.html" style="top:63%; left:35%"><img src="../element_socialmedia.png"  alt="Social Media"></a>
+    <a class="pfolder reveal d2" href="../portfolio.html" style="top:calc(73% - 220px); left:calc(76% + 30px)"><img src="../element_ai_made.png"      alt="AI Gemaakt"></a>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     7. DIENSTEN OVERZICHT
+════════════════════════════════════════════ -->
+<section class="sov" id="services-overview">
+
+  <div class="sov-unified">
+    <!-- Rij 1: labels + knop -->
+    <span class="sov-label reveal">BOEK EEN CONSULT</span>
+    <span class="sov-label reveal d1">LAAT ONS WETEN WAT JE NODIG HEBT</span>
+    <a href="#contact" class="sov-btn reveal d2">IK DOE MEE!</a>
+
+    <!-- Rij 2: tekstkolommen -->
+    <div class="sov-col reveal">
+      <p>(SOCIAL) ART DIRECTION</p>
+      <p>CREATIEVE CAMPAGNES</p>
+      <p>VISUELE (MERK)STRATEGIE</p>
+      <p>FOTOGRAFIE</p>
+      <p>AI-ASSISTED BEELDCREATIE</p>
+    </div>
+    <div class="sov-col reveal d1">
+      <p>MOODBOARD CURATIE</p>
+      <p>BRAND RITUAL DESIGN</p>
+      <p>SOCIAL MEDIA MANAGEMENT</p>
+      <p>E-MAILMARKETING</p>
+      <p>WEBSITE</p>
+    </div>
+    <div class="sov-col reveal d2">
+      <p>COPYWRITING</p>
+      <p>ADS</p>
+      <p>SEO</p>
+      <p>SEA</p>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- ════════════════════════════════════════════
+     8. ART DIRECTION
+════════════════════════════════════════════ -->
+<section class="artdir" id="artdir">
+
+  <!-- Linker kolom: volledige hoogte afbeelding -->
+  <div class="artdir-img reveal from-left">
+    <img src="../images/home-creativework-2.jpg" alt="Art direction">
+  </div>
+
+  <!-- Rechter kolom: koptekst + bodytekst -->
+  <div class="artdir-content">
+    <h2 class="artdir-h2">
+      <span class="artdir-line1 reveal">DE KUNST VAN</span>
+      <span class="artdir-line2 reveal d1">(SOCIAL)</span>
+      <span class="artdir-line3 reveal d2">art direction</span>
+    </h2>
+    <div class="artdir-text">
+      <p class="reveal d3">Goed creatief werk gaat verder dan esthetiek. Het vertelt een verhaal, bouwt verbinding en levert resultaten.</p>
+      <p class="reveal d4">Van concept tot uitvoering sturen wij het creatieve proces, zodat elk visueel element aansluit bij jouw merkverhaal en raakt waar het moet. Of het nu een fotoshoot is, een videoproductie of een social campagne; Social Art Direction is wat de aandacht pakt, merkherkenning opbouwt en volgers in klanten verandert.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════
+     10. CONTACT
+════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+
+  <!-- Linker kolom: titel + collage -->
+  <div class="contact-left">
+    <h2 class="contact-h2 reveal">
+      DEEL JE<br>MARKETING<br>VERLANGLIJST
+    </h2>
+    <p class="contact-sub reveal d1">Vertel ons over jouw merk, jouw visie en wat je nodig hebt. We nemen binnen 48 uur contact op.</p>
+    <div class="contact-collage reveal d2">
+      <div class="contact-photo-sm">
+        <img src="../images/home-wishlist-1.jpeg" alt="">
+      </div>
+      <div class="contact-photo-lg">
+        <img src="../images/home-wishlist-3.jpeg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- Rechter kolom: formulier -->
+  <div class="contact-right">
+    <form class="cform" id="cform" action="https://formspree.io/f/mzdjdgbo" method="POST" novalidate>
+
+      <!-- Rij 1: Naam + E-mail -->
+      <div class="cform-row">
+        <div class="fg reveal">
+          <label for="c-name">NAAM</label>
+          <input type="text" id="c-name" name="name" placeholder="Jouw naam" required>
+        </div>
+        <div class="fg reveal d1">
+          <label for="c-email">E-MAIL</label>
+          <input type="email" id="c-email" name="email" placeholder="jouw@email.com" required>
+        </div>
+      </div>
+
+      <!-- Rij 2: Telefoon + Dienst -->
+      <div class="cform-row">
+        <div class="fg reveal d1">
+          <label for="c-phone">TELEFOON</label>
+          <input type="tel" id="c-phone" name="phone" placeholder="+31 6 00 00 00 00">
+        </div>
+        <div class="fg reveal d2">
+          <label>DIENST</label>
+          <div class="service-dropdown" id="serviceDropdown">
+            <button type="button" class="service-dropdown-trigger" id="serviceDropdownTrigger" aria-haspopup="true" aria-expanded="false">
+              <span id="serviceDropdownText">Selecteer diensten...</span>
+              <span class="service-dropdown-arrow">▾</span>
+            </button>
+            <div class="service-dropdown-panel-wrap">
+            <div class="service-dropdown-panel" role="listbox" aria-multiselectable="true">
+              <div class="service-pills">
+                <input class="service-pill" type="checkbox" id="sp1"  name="service[]" value="(SOCIAL) Art Direction"><label for="sp1">(SOCIAL) Art Direction</label>
+                <input class="service-pill" type="checkbox" id="sp2"  name="service[]" value="Creatieve Campagnes"><label for="sp2">Creatieve Campagnes</label>
+                <input class="service-pill" type="checkbox" id="sp3"  name="service[]" value="Visuele (Merk)Strategie"><label for="sp3">Visuele (Merk)Strategie</label>
+                <input class="service-pill" type="checkbox" id="sp4"  name="service[]" value="Fotografie"><label for="sp4">Fotografie</label>
+                <input class="service-pill" type="checkbox" id="sp5"  name="service[]" value="AI-Assisted Beeldcreatie"><label for="sp5">AI-Assisted Beeldcreatie</label>
+                <input class="service-pill" type="checkbox" id="sp6"  name="service[]" value="Moodboard Curatie"><label for="sp6">Moodboard Curatie</label>
+                <input class="service-pill" type="checkbox" id="sp7"  name="service[]" value="Brand Ritual Design"><label for="sp7">Brand Ritual Design</label>
+                <input class="service-pill" type="checkbox" id="sp8"  name="service[]" value="Social Media Management"><label for="sp8">Social Media Management</label>
+                <input class="service-pill" type="checkbox" id="sp9"  name="service[]" value="E-mailmarketing"><label for="sp9">E-mailmarketing</label>
+                <input class="service-pill" type="checkbox" id="sp10" name="service[]" value="Website"><label for="sp10">Website</label>
+                <input class="service-pill" type="checkbox" id="sp11" name="service[]" value="Copywriting"><label for="sp11">Copywriting</label>
+                <input class="service-pill" type="checkbox" id="sp12" name="service[]" value="Ads"><label for="sp12">Ads</label>
+                <input class="service-pill" type="checkbox" id="sp13" name="service[]" value="SEO"><label for="sp13">SEO</label>
+                <input class="service-pill" type="checkbox" id="sp14" name="service[]" value="SEA"><label for="sp14">SEA</label>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rij 3: Bericht (volledige breedte) -->
+      <div class="cform-row full">
+        <div class="fg reveal d2">
+          <label for="c-msg">BERICHT</label>
+          <textarea id="c-msg" name="message" placeholder="Omschrijf jouw project, jouw doelen, jouw esthetische dromen..."></textarea>
+        </div>
+      </div>
+
+      <!-- Voettekst -->
+      <div class="cform-foot reveal d3">
+        <span class="cform-note">We nemen binnen 48 uur contact op.</span>
+        <button type="submit" class="cform-submit">VERSTUUR VERLANGLIJST →</button>
+      </div>
+
+    </form>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════
+     11. FOOTER CTA
+════════════════════════════════════════════ -->
+<footer id="footer">
+
+  <!-- DEEL 1: Rode sectie -->
+  <div class="footer-red">
+    <div class="footer-contact-info">
+      <p>TEL: +31 6 44 92 86 37</p>
+      <p>EMAIL: HELLO@MADEWITHMERAKI.NL</p>
+      <a href="https://www.instagram.com/meraki.and.aesthetics/" target="_blank" style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:400; color:#FFFFFF; line-height:1.8; text-transform:uppercase; text-decoration:none; display:block;">INSTAGRAM: @meraki.and.aesthetics</a>
+    </div>
+    <h2 class="footer-headline reveal">LATEN WE SAMEN CREËREN</h2>
+    <div class="footer-cols">
+      <div>
+        <p class="footer-nav-title">Navigeer</p>
+        <ul class="footer-nav-list">
+          <li><a href="#expand">OVER ONS</a></li>
+          <li><a href="#services">DIENSTEN</a></li>
+          <li><a href="#portfolio">PORTFOLIO</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-body-text">Klaar om jouw merkverhaal te vertellen op een manier die resoneert? Met een passie voor intentioneel design en een strategisch oog voor groei maken wij content die verbindt, converteert en blijft. Laten we iets maken dat opvalt.</p>
+      </div>
+      <div class="footer-explore">
+        <p class="footer-explore-title">Verkennen</p>
+        <ul class="footer-explore-list">
+          <li><a href="../newsletter.html" target="_blank">NIEUWSBRIEF</a></li>
+          <li><a href="https://calendly.com/mwmeraki-studio/30min" target="_blank">GRATIS GESPREK</a></li>
+          <li><a href="#">GRATIS DOWNLOADS</a></li>
+          <li><a href="#">BLOG</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEEL 2: Zwarte onderbalk -->
+  <div class="footer-bar">
+    <span class="footer-bar-left">2026 MADE WITH MERAKI.</span>
+    <span class="footer-bar-center"><a href="../Terms-and-Conditions-Made-with-Meraki.pdf" target="_blank">ALGEMENE VOORWAARDEN</a></span>
+    <span class="footer-bar-right"><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">TERUG NAAR BOVEN</a></span>
+  </div>
+
+</footer>
+
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+  /* ── Navbar scroll ── */
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  const ham  = document.getElementById('ham');
+  const mnav = document.getElementById('mnav');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mnav.classList.toggle('open');
+  });
+  function closeMob() {
+    ham.classList.remove('open');
+    mnav.classList.remove('open');
+  }
+  document.addEventListener('click', e => {
+    if (!navEl.contains(e.target) && !mnav.contains(e.target) && !ham.contains(e.target)) closeMob();
+  });
+
+  /* ── Smooth anchor scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const t = document.querySelector(id);
+      if (t) {
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 72, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── Scroll reveal (Intersection Observer) ── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -55px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ── Custom cursor ── */
+  const cur = document.getElementById('cur');
+  let cx = 0, cy = 0, tx = 0, ty = 0;
+  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+  (function animCur() {
+    cx += (tx - cx) * 0.14;
+    cy += (ty - cy) * 0.14;
+    cur.style.left = cx + 'px';
+    cur.style.top  = cy + 'px';
+    requestAnimationFrame(animCur);
+  })();
+  document.querySelectorAll('a, button, .scard, .pol').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('big'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+  });
+  // Cursor verbergen op mobiel
+  if ('ontouchstart' in window) cur.style.display = 'none';
+
+  /* ── Portfolio typewriter ── */
+  (function() {
+    const el = document.querySelector('.portfolio-scroll-hint');
+    if (!el) return;
+    const fullText = el.textContent;
+    el.textContent = '';
+    let i = 0, started = false;
+    const type = () => { if (i < fullText.length) { el.textContent += fullText[i++]; setTimeout(type, 52); } };
+    new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting && !started) {
+        started = true;
+        setTimeout(type, 300);
+        obs.disconnect();
+      }
+    }, { threshold: 0.5 }).observe(el);
+  })();
+
+  /* ── Service dropdown ── */
+  (function() {
+    const dd      = document.getElementById('serviceDropdown');
+    const trigger = document.getElementById('serviceDropdownTrigger');
+    const textEl  = document.getElementById('serviceDropdownText');
+    if (!dd) return;
+
+    // Open/sluit
+    trigger.addEventListener('click', () => {
+      const isOpen = dd.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Sluiten bij klik buiten
+    document.addEventListener('click', e => {
+      if (!dd.contains(e.target)) {
+        dd.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Label bijwerken bij selectiewijziging
+    dd.addEventListener('change', () => {
+      const checked = dd.querySelectorAll('.service-pill:checked');
+      if (checked.length === 0) {
+        textEl.textContent = 'Selecteer diensten...';
+        trigger.classList.remove('has-value');
+      } else if (checked.length === 1) {
+        textEl.textContent = checked[0].value;
+        trigger.classList.add('has-value');
+      } else {
+        textEl.textContent = checked.length + ' diensten geselecteerd';
+        trigger.classList.add('has-value');
+      }
+    });
+  })();
+
+  /* ── Portfolio category filter ── */
+  document.querySelectorAll('.pcat').forEach(cat => {
+    cat.addEventListener('click', () => {
+      document.querySelectorAll('.pcat').forEach(c => c.classList.remove('active'));
+      cat.classList.add('active');
+    });
+  });
+
+  /* ── Contact form (Formspree async) ── */
+  document.getElementById('cform').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target;
+    const btn  = form.querySelector('.cform-submit');
+    btn.textContent = 'VERZENDEN...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = 'VERZONDEN ✓';
+        btn.classList.add('sent');
+      } else {
+        btn.textContent = 'FOUT — PROBEER OPNIEUW';
+        btn.style.background = '#8f0d0d';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'FOUT — PROBEER OPNIEUW';
+      btn.disabled = false;
+    }
+  });
+
+  /* ── Hero-alt carousel ── */
+  const heroAltImages = [
+    '../images/home-carrousel4.jpeg',
+    '../images/AI MADE - byfredo.png',
+    '../images/AI MADE - Ceremonia.png',
+    '../images/AI MADE - Cowboy cush v2.png',
+    '../images/AI MADE - REFY.png',
+    '../images/AI MADE - SALT & STONE.png'
+  ];
+
+  (function() {
+    const slides  = document.querySelectorAll('.hero-alt-slide');
+    const dots    = document.querySelectorAll('.hero-alt-dot');
+    const counter = document.getElementById('heroAltCounter');
+    if (!slides.length) return;
+
+    const total = String(slides.length).padStart(2, '0');
+
+    heroAltImages.forEach((src, i) => {
+      if (src && slides[i]) {
+        slides[i].innerHTML = '<img src="' + src + '" alt="Slide ' + (i+1) + '">';
+      }
+    });
+
+    let current = 0;
+    let timer;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      if (counter) counter.textContent = String(current + 1).padStart(2, '0') + ' / ' + total;
+    }
+
+    function start() {
+      timer = setInterval(() => goTo(current + 1), 3000);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(i);
+        start();
+      });
+    });
+
+    start();
+  })();
+</script>
+
+<!-- Zwevende Calendly knop -->
+<a href="https://calendly.com/mwmeraki-studio/30min" target="_blank" style="position:fixed; bottom:32px; right:32px; z-index:999; background:#f6f859; color:#0A0A0A; text-decoration:none; border-radius:25px; padding:14px 28px; font-family:'Roboto Mono',monospace; font-size:11px; font-weight:400; letter-spacing:.08em; cursor:pointer;">BOEK EEN GESPREK →</a>
+
+<!-- EXIT INTENT POPUP -->
+<div id="exitPopup" style="display:none; position:fixed; inset:0; z-index:10000; align-items:center; justify-content:center;">
+  <div id="exitOverlay" onclick="document.getElementById('exitPopup').style.display='none'" style="position:absolute; inset:0; background:rgba(10,10,10,.6); cursor:pointer;"></div>
+  <div id="exitModal" style="position:relative; z-index:1; background:#ececeb; padding:52px 48px 44px; max-width:480px; width:90%; text-align:center;">
+    <button id="exitClose" onclick="document.getElementById('exitPopup').style.display='none'" style="position:absolute; top:16px; right:20px; background:none; border:none; font-family:'Roboto Mono',monospace; font-size:16px; color:#8B1A1A; cursor:pointer; line-height:1;">&#x2715;</button>
+    <h2 style="font-family:'Roboto Mono',monospace; font-size:clamp(22px,4vw,34px); font-weight:700; letter-spacing:.04em; color:#8B1A1A; margin-bottom:16px;">VOORDAT JE WEGGAAT...</h2>
+    <p style="font-family:'Roboto Mono',monospace; font-size:12px; font-weight:300; letter-spacing:.06em; line-height:1.7; color:#8B1A1A; margin-bottom:32px;">BLIJF OP DE HOOGTE MET MAANDELIJKSE TRENDS EN MOOIE PROJECTEN. SCHRIJF JE IN VOOR ONZE NIEUWSBRIEF.</p>
+    <a href="../newsletter.html" target="_blank" id="exitBtn" style="display:inline-block; font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; letter-spacing:.1em; color:#0A0A0A; background:#f6f859; border-radius:25px; padding:14px 48px; text-decoration:none; transition:background .3s,transform .2s;">INSCHRIJVEN</a>
+  </div>
+</div>
+
+<script>
+  /* ── Exit intent popup ── */
+  (function() {
+    if (localStorage.getItem('newsletterPopupSeen')) return;
+    var popup = document.getElementById('exitPopup');
+    var shown = false;
+    function showPopup() {
+      if (shown) return;
+      shown = true;
+      popup.style.display = 'flex';
+      localStorage.setItem('newsletterPopupSeen', '1');
+    }
+    function closePopup() {
+      popup.style.display = 'none';
+    }
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 10) showPopup();
+    });
+    document.getElementById('exitClose').addEventListener('click', closePopup);
+    document.getElementById('exitOverlay').addEventListener('click', closePopup);
+  })();
+</script>
+</body>
+</html>
