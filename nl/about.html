@@ -638,25 +638,25 @@
       font-family: 'Noto Serif Display', serif;
       font-style: italic;
       font-weight: 400;
-      font-size: 110px;
+      font-size: clamp(60px, 8.5vw, 110px);
       color: #8B0000;
       display: block;
-      text-align: center;
+      text-align: left;
       margin-bottom: 0;
       margin-left: 0;
-      padding-left: 0;
+      padding-left: clamp(80px, 12vw, 180px);
     }
 
     .footer-hook-line2 {
       font-family: 'Canva Sans', 'DM Sans', sans-serif;
       font-weight: 400;
-      font-size: 110px;
+      font-size: clamp(60px, 8.5vw, 110px);
       color: #8B0000;
       display: block;
-      text-align: center;
+      text-align: right;
       margin-left: 0;
       margin-right: 0;
-      padding-right: 0;
+      padding-right: clamp(80px, 12vw, 180px);
       letter-spacing: .04em;
       margin-top: 0;
       line-height: 1;
@@ -744,8 +744,8 @@
 
       .footer-main { padding: 40px 24px !important; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 2rem !important; }
       .footer-hook { text-align: center !important; width: 100% !important; }
-      .footer-hook-line1 { font-size: clamp(2rem, 10vw, 4rem) !important; text-align: center !important; padding-left: 0 !important; }
-      .footer-hook-line2 { font-size: clamp(2.5rem, 12vw, 5rem) !important; text-align: center !important; padding-right: 0 !important; }
+      .footer-hook-line1 { font-size: clamp(36px, 10vw, 64px) !important; text-align: center !important; padding-left: 0 !important; }
+      .footer-hook-line2 { font-size: clamp(36px, 10vw, 64px) !important; text-align: center !important; padding-right: 0 !important; }
       .footer-connect-btn { width: 80% !important; text-align: center !important; margin: 0 auto !important; display: block !important; }
       .footer-contact-info { text-align: center !important; margin-top: 0 !important; position: static !important; }
       .footer-bar { flex-direction: column !important; align-items: center !important; gap: 0.5rem !important; padding: 16px 24px !important; text-align: center !important; }
@@ -1265,8 +1265,8 @@
 <!-- DIENSTEN OVERZICHT -->
 <section class="cv-sov" style="padding-top: 80px; padding-bottom: 60px;">
   <div class="about-sov-cols" style="align-items: center; margin-bottom: 0;">
-    <span class="cv-sov-label reveal">Book a discovery call</span>
-    <span class="cv-sov-label reveal d1">&amp; laat ons weten wat je nodig hebt</span>
+    <span class="cv-sov-label reveal">BOOK A DISCOVERY CALL</span>
+    <span class="cv-sov-label reveal d1">&amp; LAAT ONS WETEN WAT JE NODIG HEBT</span>
     <a href="index.html#contact" class="cv-sov-btn reveal d2" style="justify-self: end;">Let's connect</a>
   </div>
 </section>
@@ -1302,8 +1302,8 @@
 <footer id="footer">
   <div class="footer-main">
     <div class="footer-hook reveal">
-      <span class="footer-hook-line1" style="display: block; text-align: center !important; padding-left: 0 !important; width: 100%;">Let's create</span>
-      <span class="footer-hook-line2" style="display: block; text-align: center !important; padding-right: 0 !important; width: 100%;">TOGETHER</span>
+      <span class="footer-hook-line1">Let's create</span>
+      <span class="footer-hook-line2">TOGETHER</span>
     </div>
     <a href="index.html#contact" class="footer-connect-btn reveal d1">Let's connect</a>
     <div class="footer-contact-info">
@@ -1374,15 +1374,10 @@
 
   /* ── Custom cursor ── */
   const cur = document.getElementById('cur');
-  let cx = 0, cy = 0, tx = 0, ty = 0;
-  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
-  (function animCur() {
-    cx += (tx - cx) * 0.14;
-    cy += (ty - cy) * 0.14;
-    cur.style.left = cx + 'px';
-    cur.style.top  = cy + 'px';
-    requestAnimationFrame(animCur);
-  })();
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  }, { passive: true });
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseenter', () => cur.classList.add('big'));
     el.addEventListener('mouseleave', () => cur.classList.remove('big'));

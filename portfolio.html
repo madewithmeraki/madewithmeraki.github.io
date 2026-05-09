@@ -328,15 +328,10 @@
 
   /* ── Custom cursor ── */
   const cur = document.getElementById('cur');
-  let cx = 0, cy = 0, tx = 0, ty = 0;
-  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
-  (function animCur() {
-    cx += (tx - cx) * 0.14;
-    cy += (ty - cy) * 0.14;
-    cur.style.left = cx + 'px';
-    cur.style.top  = cy + 'px';
-    requestAnimationFrame(animCur);
-  })();
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  }, { passive: true });
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseenter', () => cur.classList.add('big'));
     el.addEventListener('mouseleave', () => cur.classList.remove('big'));

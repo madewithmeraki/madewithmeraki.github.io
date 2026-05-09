@@ -282,7 +282,7 @@
 <!-- TAGLINE -->
 <section class="cv-tagline">
   <p class="cv-tagline-text">
-    <span class="cv-tagline-sans">YOUR BRAND BUT </span><span class="cv-tagline-serif">ELEVATED</span>
+    <span class="cv-tagline-sans">YOUR BRAND, </span><span class="cv-tagline-serif">but Elevated</span>
   </p>
 </section>
 
@@ -315,9 +315,9 @@
 <!-- DIENSTEN OVERZICHT -->
 <section class="cv-sov">
   <div class="cv-sov-unified">
-    <span class="cv-sov-label reveal">Boek een consult</span>
-    <span class="cv-sov-label reveal d1">laat ons weten wat je nodig hebt</span>
-    <a href="index.html#contact" class="cv-sov-btn reveal d2">Let's connect</a>
+    <span class="cv-sov-label reveal">BOEK EEN CONSULT</span>
+    <span class="cv-sov-label reveal d1">LAAT ONS WETEN WAT JE NODIG HEBT</span>
+    <a href="index.html#contact" class="cv-sov-btn reveal d2">LET'S CONNECT</a>
 
     <div class="cv-sov-col reveal" style="grid-column: 1 / -1; margin-top: 32px;">
       <p style="color: #8B0000; font-weight: 600; font-size: 18px; font-family: 'DM Sans', sans-serif; letter-spacing: 0; margin-bottom: 8px;">OOK ONDERDEEL VAN ONZE CREATIEVE TOOLKIT</p>
@@ -409,15 +409,10 @@
 
   /* ── Custom cursor ── */
   const cur = document.getElementById('cur');
-  let cx = 0, cy = 0, tx = 0, ty = 0;
-  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
-  (function animCur() {
-    cx += (tx - cx) * 0.14;
-    cy += (ty - cy) * 0.14;
-    cur.style.left = cx + 'px';
-    cur.style.top  = cy + 'px';
-    requestAnimationFrame(animCur);
-  })();
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  }, { passive: true });
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseenter', () => cur.classList.add('big'));
     el.addEventListener('mouseleave', () => cur.classList.remove('big'));

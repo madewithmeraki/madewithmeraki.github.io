@@ -578,6 +578,7 @@
 
     /* ── CV Fullwidth image ── */
     .cv-fullwidth-img {
+      display: none;
       padding: 0 60px 0 60px;
       margin: 0;
       border: none;
@@ -705,6 +706,7 @@
       .mobile-nav ul li a { font-family: 'Roboto Mono', monospace !important; text-transform: uppercase !important; }
       .mobile-nav .m-sub a { font-family: 'Roboto Mono', monospace !important; text-transform: uppercase !important; display: block !important; }
 
+      .cv-fullwidth-img { display: block; }
       .cv-hero-img { height: 22vh; }
       .cv-hero-text { padding: 3.5rem 6% 4rem; }
       .cv-hero-title .t-bold { font-size: clamp(28px, 8vw, 60px); }
@@ -1081,15 +1083,10 @@
 
   /* ── Custom cursor ── */
   const cur = document.getElementById('cur');
-  let cx = 0, cy = 0, tx = 0, ty = 0;
-  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
-  (function animCur() {
-    cx += (tx - cx) * 0.14;
-    cy += (ty - cy) * 0.14;
-    cur.style.left = cx + 'px';
-    cur.style.top  = cy + 'px';
-    requestAnimationFrame(animCur);
-  })();
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  }, { passive: true });
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseenter', () => cur.classList.add('big'));
     el.addEventListener('mouseleave', () => cur.classList.remove('big'));

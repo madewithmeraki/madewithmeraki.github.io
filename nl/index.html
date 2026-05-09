@@ -623,7 +623,7 @@
       padding: calc(6rem - 10px) 4rem calc(6rem - 10px) calc(5% + 14px);
       overflow: visible; position: relative; z-index: 1;
     }
-    .elevating-h2 { line-height: 1.08; }
+    .elevating-h2 { line-height: 1.08; margin-left: 60px; }
     .el-dm {
       font-family: 'DM Sans', sans-serif;
       font-weight: 400; font-size: 138px;
@@ -1381,7 +1381,7 @@
     <div class="m-item">
       <span class="m-word">CAMPAGNES</span><span class="m-dot"></span>
       <span class="m-word">VISUELE MERKSTRATEGIE</span><span class="m-dot"></span>
-      <span class="m-word">MERKRITUEEL ONTWERP</span><span class="m-dot"></span>
+      <span class="m-word">BRAND RITUAL DESIGN</span><span class="m-dot"></span>
       <span class="m-word">SOCIAL MEDIA PAKKETTEN</span><span class="m-dot"></span>
       <span class="m-word">FOTOGRAFIE PAKKETTEN</span><span class="m-dot"></span>
       <span class="m-word">E-MAILMARKETING</span><span class="m-dot"></span>
@@ -1390,7 +1390,7 @@
     <div class="m-item">
       <span class="m-word">CAMPAGNES</span><span class="m-dot"></span>
       <span class="m-word">VISUELE MERKSTRATEGIE</span><span class="m-dot"></span>
-      <span class="m-word">MERKRITUEEL ONTWERP</span><span class="m-dot"></span>
+      <span class="m-word">BRAND RITUAL DESIGN</span><span class="m-dot"></span>
       <span class="m-word">SOCIAL MEDIA PAKKETTEN</span><span class="m-dot"></span>
       <span class="m-word">FOTOGRAFIE PAKKETTEN</span><span class="m-dot"></span>
       <span class="m-word">E-MAILMARKETING</span><span class="m-dot"></span>
@@ -1407,8 +1407,9 @@
   <!-- Linker kolom: koptekst -->
   <div class="elevating-left">
     <h2 class="elevating-h2">
-      <span class="el-dm reveal">BRANDS CREËREN</span>
-      <span class="el-serif reveal d1">met</span>
+      <span class="el-dm reveal">BRANDS</span>
+      <span class="el-dm reveal d1">CREËREN</span>
+      <span class="el-serif reveal d2">met</span>
       <span class="el-dm reveal d3">(VISIE)</span>
     </h2>
   </div>
@@ -1628,7 +1629,7 @@
       <p>EMAIL: HELLO@MADEWITHMERAKI.NL</p>
       <a href="https://www.instagram.com/meraki.and.aesthetics/" target="_blank" style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:400; color:#FFFFFF; line-height:1.8; text-transform:uppercase; text-decoration:none; display:block;">INSTAGRAM: @meraki.and.aesthetics</a>
     </div>
-    <h2 class="footer-headline reveal">LATEN WE SAMEN CREËREN</h2>
+    <h2 class="footer-headline reveal">LET'S CREATE TOGETHER</h2>
     <div class="footer-cols">
       <div>
         <p class="footer-nav-title">Navigeer</p>
@@ -1711,15 +1712,10 @@
 
   /* ── Custom cursor ── */
   const cur = document.getElementById('cur');
-  let cx = 0, cy = 0, tx = 0, ty = 0;
-  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
-  (function animCur() {
-    cx += (tx - cx) * 0.14;
-    cy += (ty - cy) * 0.14;
-    cur.style.left = cx + 'px';
-    cur.style.top  = cy + 'px';
-    requestAnimationFrame(animCur);
-  })();
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  }, { passive: true });
   document.querySelectorAll('a, button, .scard, .pol').forEach(el => {
     el.addEventListener('mouseenter', () => cur.classList.add('big'));
     el.addEventListener('mouseleave', () => cur.classList.remove('big'));
