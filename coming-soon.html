@@ -71,6 +71,7 @@
     .nav-links li { display: flex; }
     .nav-links a {
       display: flex; align-items: center;
+      height: 50px;
       font-family: 'Roboto Mono', monospace;
       font-size: 15px; font-weight: 400; letter-spacing: .08em;
       text-transform: uppercase; color: var(--black);
@@ -100,7 +101,7 @@
     .dropdown::before { content: ''; position: absolute; top: -18px; left: -10px; right: -10px; height: 18px; background: transparent; }
     .dropdown::after { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-bottom-color: var(--black); border-top: none; }
     .has-drop:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
-    .dropdown a { display: block; padding: .55rem 1.4rem; color: var(--cream) !important; font-size: .78rem; letter-spacing: .08em; transition: background .2s, padding-left .2s; }
+    .dropdown a { display: block; padding: .55rem 1.4rem; height: auto; color: var(--cream) !important; font-size: .78rem; letter-spacing: .08em; transition: background .2s, padding-left .2s; }
     .dropdown a::after { display: none !important; }
     .dropdown a:hover { background: var(--red); padding-left: 2rem; }
 

@@ -59,7 +59,7 @@
     .nav-logo .logo-bold  { font-weight: 700; font-style: normal; }
     .nav-links { display: flex; align-items: stretch; align-self: stretch; gap: 2.5rem; list-style: none; }
     .nav-links li { display: flex; }
-    .nav-links a { display: flex; align-items: center; font-family: 'Roboto Mono', monospace; font-size: 15px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--black); position: relative; transition: color .3s; }
+    .nav-links a { display: flex; align-items: center; height: 50px; font-family: 'Roboto Mono', monospace; font-size: 15px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--black); position: relative; transition: color .3s; }
     .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--red); transition: width .3s; }
     .nav-links a:hover { color: var(--red); }
     .nav-links a:hover::after { width: 100%; }
@@ -72,7 +72,7 @@
     .dropdown::before { content: ''; position: absolute; top: -18px; left: -10px; right: -10px; height: 18px; background: transparent; }
     .dropdown::after { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-bottom-color: var(--black); border-top: none; }
     .has-drop:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
-    .dropdown a { display: block; padding: .55rem 1.4rem; color: var(--cream) !important; font-size: .78rem; letter-spacing: .08em; transition: background .2s, padding-left .2s; }
+    .dropdown a { display: block; padding: .55rem 1.4rem; height: auto; color: var(--cream) !important; font-size: .78rem; letter-spacing: .08em; transition: background .2s, padding-left .2s; }
     .dropdown a::after { display: none !important; }
     .dropdown a:hover { background: var(--red); padding-left: 2rem; }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
