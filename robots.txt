@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Disallow:
 
-Sitemap: https://madewithmeraki.github.io/sitemap.xml
+Sitemap: https://madewithmeraki.nl/sitemap.xml

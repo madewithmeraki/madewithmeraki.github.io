@@ -3,104 +3,109 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://madewithmeraki.github.io/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/index.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/index.html"/>
+    <loc>https://madewithmeraki.nl/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/index.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/index.html"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/about.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/about.html"/>
+    <loc>https://madewithmeraki.nl/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/about.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/about.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/creative-visuals.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/creative-visuals.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/creative-visuals.html"/>
+    <loc>https://madewithmeraki.nl/creative-visuals.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/creative-visuals.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/creative-visuals.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/photography.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/photography.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/photography.html"/>
+    <loc>https://madewithmeraki.nl/photography.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/photography.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/photography.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/social-media.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/social-media.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/social-media.html"/>
+    <loc>https://madewithmeraki.nl/social-media.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/social-media.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/social-media.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/marketing.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/marketing.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/marketing.html"/>
+    <loc>https://madewithmeraki.nl/marketing.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/marketing.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/marketing.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/newsletter.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/newsletter.html"/>
+    <loc>https://madewithmeraki.nl/portfolio.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/nl/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/index.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/index.html"/>
+    <loc>https://madewithmeraki.nl/newsletter.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://madewithmeraki.nl/nl/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/index.html"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/nl/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/about.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/about.html"/>
+    <loc>https://madewithmeraki.nl/nl/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/about.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/nl/creative-visuals.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/creative-visuals.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/creative-visuals.html"/>
+    <loc>https://madewithmeraki.nl/nl/creative-visuals.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/creative-visuals.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/creative-visuals.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/nl/photography.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/photography.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/photography.html"/>
+    <loc>https://madewithmeraki.nl/nl/photography.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/photography.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/photography.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/nl/social-media.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/social-media.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/social-media.html"/>
+    <loc>https://madewithmeraki.nl/nl/social-media.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/social-media.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/social-media.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://madewithmeraki.github.io/nl/marketing.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.github.io/nl/marketing.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.github.io/marketing.html"/>
+    <loc>https://madewithmeraki.nl/nl/marketing.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://madewithmeraki.nl/nl/marketing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://madewithmeraki.nl/marketing.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
