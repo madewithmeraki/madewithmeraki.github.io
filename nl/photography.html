@@ -123,11 +123,10 @@
     .nav-logo .logo-plain { font-style: italic; font-weight: 400; }
     .nav-logo .logo-bold  { font-weight: 700; font-style: normal; }
 
-    .nav-links { display: flex; align-items: stretch; align-self: stretch; height: 50px; gap: 2.5rem; list-style: none; }
-    .nav-links li { display: flex; height: 100%; }
+    .nav-links { display: flex; align-items: stretch; margin-left: auto; gap: 2.5rem; list-style: none; }
+    .nav-links li { display: flex; align-items: stretch; }
     .nav-links a {
       display: flex; align-items: center;
-      height: 50px;
       font-family: 'Roboto Mono', monospace;
       font-size: 15px; font-weight: 400; letter-spacing: .08em;
       text-transform: uppercase; color: var(--black);
@@ -736,6 +735,7 @@
       html, body { overflow-x: hidden !important; max-width: 100% !important; }
       .nav { background: #FFFFFF !important; z-index: 9999 !important; width: 100% !important; box-sizing: border-box !important; left: 0 !important; right: 0 !important; }
       .nav-links { display: none; }
+      .lang-switch { display: none; }
       .hamburger { display: flex; flex-shrink: 0 !important; }
       .hamburger span { background: #0A0A0A !important; width: 24px !important; height: 2px !important; border-radius: 0 !important; }
       .nav-logo { font-size: clamp(14px, 5vw, 24px) !important; letter-spacing: .02em !important; }
@@ -1050,12 +1050,12 @@
       </li>
       <li><a href="../index.html#portfolio">Portfolio</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
-      <div class="lang-switch">
-        <a href="../photography.html" class="lang-link">EN</a>
-        <span class="lang-sep">|</span>
-        <span class="lang-active">NL</span>
-      </div>
     </ul>
+    <div class="lang-switch">
+      <a href="../photography.html" class="lang-link">EN</a>
+      <span class="lang-sep">|</span>
+      <span class="lang-active">NL</span>
+    </div>
     <button class="hamburger" id="ham" aria-label="Menu openen">
       <span></span><span></span><span></span>
     </button>
