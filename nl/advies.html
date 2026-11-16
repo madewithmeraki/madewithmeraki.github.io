@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Advies | Made With Meraki</title>
+
+<meta property="og:title" content="Advies voor startende zelfstandig professionals | Made With Meraki">
+<meta property="og:description" content="Positionerings- en zichtbaarheidsadvies voor startende zelfstandig professionals.">
+<meta property="og:image" content="https://madewithmeraki.nl/images/og-image.jpg">
+<meta property="og:url" content="https://madewithmeraki.nl/nl/advies.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://madewithmeraki.nl/nl/advies.html" />
+<meta name="description" content="Positionerings- en zichtbaarheidsadvies voor startende zelfstandig professionals.">
+<link rel="icon" type="image/png" href="../images/favicon-def.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Serif+Display:ital,wght@1,400;1,500&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* kleuren 1-op-1 uit madewithmeraki.nl */
+    --red: #8B1A1A;
+    --red-deep: #6f1414;
+    --red-dark: #8B1A1A;
+    --black: #0A0A0A;
+    --white: #FFFFFF;
+    --cream: #F5F0E8;
+    --bg: #ececeb;
+    --off-white: #ececeb;
+    --warm-grey: #e3e3e1;
+    --soft-grey: #d6d6d3;
+    --ink: #0A0A0A;
+    --ink-soft: #2a2a2a;
+    --muted: #66665f;
+    --yellow: #FFFF00;
+    --yellow-btn: #f6f859;
+    --border: #d0d0cd;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; }
+
+  body {
+    padding-top: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body.modal-open { overflow: hidden; }
+
+  .serif-italic {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* NAVBAR — identiek aan madewithmeraki.nl */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    background: #ececeb;
+    border-bottom: 1px solid rgba(17,17,17,.08);
+    height: 50px;
+    display: flex; align-items: stretch; justify-content: space-between;
+    padding: 0 5%;
+    transition: box-shadow .3s;
+  }
+  .nav.scrolled { box-shadow: 0 2px 30px rgba(17,17,17,.08); }
+  .nav > nav { display: contents; }
+  .nav a, .mobile-nav a { text-decoration: none; }
+
+  .nav-logo {
+    display: flex; align-items: center; line-height: 1;
+    color: #8f0d0d;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px; letter-spacing: .02em;
+    text-decoration: none;
+  }
+  .nav-logo .logo-plain { font-style: italic; font-weight: 400; }
+  .nav-logo .logo-bold  { font-weight: 700; font-style: normal; }
+
+  .nav-links { display: flex; align-items: stretch; margin-left: auto; gap: 2.5rem; list-style: none; height: 50px; }
+  .nav-links li { display: flex; align-items: stretch; height: 100%; }
+  .nav-links a {
+    display: block; height: 50px; line-height: 50px; padding: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px; font-weight: 400; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--black);
+    position: relative; transition: color .3s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px; background: var(--red); transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .has-drop { position: relative; }
+  .has-drop > a::after { display: none; }
+  .has-drop > a .arrow { display: inline-block; margin-left: 4px; font-size: .6rem; transition: transform .3s; }
+  .has-drop:hover > a .arrow { transform: rotate(180deg); }
+
+  .dropdown {
+    position: absolute; top: calc(100% + 18px); left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--black); min-width: 210px;
+    padding: .6rem 0;
+    opacity: 0; pointer-events: none;
+    transition: all .3s cubic-bezier(.16,1,.3,1);
+    transition-delay: .15s;
+  }
+  .has-drop:hover .dropdown { transition-delay: 0s; }
+  .dropdown::before { content: ''; position: absolute; top: -18px; left: -10px; right: -10px; height: 18px; background: transparent; }
+  .dropdown::after {
+    content: ''; position: absolute; top: -5px; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent; border-bottom-color: var(--black); border-top: none;
+  }
+  .has-drop:hover .dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+  .dropdown a {
+    display: block; padding: .55rem 1.4rem; height: auto; line-height: normal;
+    color: var(--cream) !important; font-size: .78rem;
+    letter-spacing: .08em; transition: background .2s, padding-left .2s;
+  }
+  .dropdown a::after { display: none !important; }
+  .dropdown a:hover { background: var(--red); padding-left: 2rem; }
+
+  .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 24px; font-family: 'Roboto Mono', monospace; font-size: 11px; letter-spacing: .1em; }
+  .lang-active { color: #8f0d0d; font-weight: 700; text-decoration: underline; }
+  .lang-sep { color: #8f0d0d; }
+  .lang-link { color: #8f0d0d; text-decoration: none; }
+  .lang-link:hover { text-decoration: underline; }
+
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: none; padding: 4px; cursor: pointer;
+  }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); transition: all .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav {
+    position: fixed; top: 50px; left: 0; right: 0; z-index: 899;
+    background: var(--cream); border-bottom: 1px solid rgba(17,17,17,.1);
+    padding: 1.5rem 5% 2rem;
+    transform: translateY(-110%); opacity: 0;
+    transition: all .4s cubic-bezier(.16,1,.3,1);
+  }
+  .mobile-nav.open { transform: translateY(0); opacity: 1; }
+  .mobile-nav ul { list-style: none; }
+  .mobile-nav ul li a {
+    display: block; font-family: 'Roboto Mono', monospace; text-transform: uppercase;
+    font-size: 2.2rem; letter-spacing: .06em; color: var(--black);
+    padding: .35rem 0; border-bottom: 1px solid rgba(17,17,17,.07);
+    transition: color .2s, padding-left .2s;
+  }
+  .mobile-nav ul li a:hover { color: var(--red); padding-left: .8rem; }
+  .mobile-nav .m-sub { padding: .3rem 0 .3rem 1rem; }
+  .mobile-nav .m-sub a {
+    display: block; font-family: 'Roboto Mono', monospace; text-transform: uppercase;
+    font-size: .85rem; letter-spacing: .1em; font-weight: 500;
+    color: rgba(17,17,17,.5); padding: .25rem 0;
+  }
+  .mobile-lang { display: flex; align-items: center; gap: 8px; margin-top: 1.5rem; font-family: 'Roboto Mono', monospace; font-size: 13px; letter-spacing: .1em; }
+  .mobile-lang-active { color: #8f0d0d; font-weight: 700; }
+  .mobile-lang-sep { color: rgba(139,26,26,.4); }
+  .mobile-lang-link { color: #8f0d0d; text-decoration: none; }
+
+  /* custom cursor, zoals op de site */
+  .cursor {
+    width: 8px; height: 8px; background: var(--red);
+    border-radius: 50%; position: fixed; pointer-events: none;
+    z-index: 9999; transform: translate(-50%,-50%);
+    transition: width .3s, height .3s, background .3s;
+    left: -40px; top: -40px;
+  }
+  .cursor.big { width: 42px; height: 42px; background: rgba(139,26,26,.12); border: 1px solid var(--red); }
+
+  @media (max-width: 768px) {
+    .nav { background: #FFFFFF; z-index: 9999; }
+    .lang-switch { display: none; }
+    .hamburger { display: flex; flex-shrink: 0; }
+    .nav-logo { font-size: clamp(14px, 5vw, 24px); }
+    .mobile-nav { background: #FFFF00; z-index: 9998; }
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--warm-grey);
+    padding: 140px 40px 100px;
+    text-align: center;
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(30px, 8vw, 110px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+
+  .hero-title .serif-italic {
+    text-transform: none;
+    font-weight: 400;
+    color: var(--red);
+    display: inline-block;
+    margin: 0 0.1em;
+  }
+
+  .hero-sub {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 50px;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* INTRO — editorial layered typography with motion space */
+  .intro {
+    background: var(--red);
+    color: var(--white);
+    padding: 160px 40px 140px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Giant mono-caps "GEFELICITEERD" background — same style family as POSITIONERING EN ONLINE ZICHTBAARHEID */
+  .intro-bg-word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: clamp(60px, 10vw, 150px);
+    color: rgba(245, 241, 234, 0.07);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    letter-spacing: 0.18em;
+    animation: floatWord 8s ease-in-out infinite;
+  }
+
+  @keyframes floatWord {
+    0%, 100% { transform: translate(-50%, -62%) translateY(0); }
+    50% { transform: translate(-50%, -62%) translateY(-12px); }
+  }
+
+  /* WhatsApp-style message bubble that pops in */
+  .wa-wrap { position: absolute; top: 70px; right: 60px; z-index: 2; }
+
+  .wa-bubble {
+    position: relative;
+    opacity: 0;
+    transform-origin: top right;
+    animation: waTyping 1.2s 0.6s forwards, waPopIn 0.6s 2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, waWiggle 4s 3s ease-in-out infinite;
+  }
+
+  .wa-bubble .wa-msg {
+    background: #ffffff;
+    color: #111;
+    padding: 10px 14px 8px;
+    border-radius: 14px 14px 14px 4px;
+    font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    min-width: 170px;
+    max-width: 240px;
+  }
+
+  /* little tail on the bubble */
+  .wa-bubble .wa-msg::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -7px;
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .wa-bubble .wa-text {
+    color: #111;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .wa-bubble .wa-time {
+    font-size: 10px;
+    color: #8a8a8a;
+    text-align: right;
+    letter-spacing: 0.02em;
+  }
+
+  .wa-bubble .wa-check {
+    color: #4fc3f7;
+    margin-left: 3px;
+    font-weight: 600;
+  }
+
+  /* typing dots (shown first) */
+  .wa-typing {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 14px 14px 14px 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    animation: waTypingShow 0.3s 0.6s forwards, waTypingHide 0.3s 2s forwards;
+  }
+
+  .wa-typing span {
+    width: 7px;
+    height: 7px;
+    background: #999;
+    border-radius: 50%;
+    animation: waDots 1.4s infinite ease-in-out;
+  }
+
+  .wa-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .wa-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+
+  /* Yellow dismiss dot next to the WhatsApp bubble */
+  .wa-dismiss {
+    position: absolute;
+    left: -30px;
+    bottom: -8px;
+    width: 14px;
+    height: 14px;
+    background: var(--yellow);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    z-index: 4;
+    opacity: 0;
+    animation: dotAppear 0.4s 2.5s forwards, dotPulse 2.4s 2.9s ease-in-out infinite;
+    transition: transform 0.2s;
+  }
+
+  .wa-dismiss:hover {
+    transform: scale(1.3);
+  }
+
+  .wa-dismiss::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+  }
+
+  @keyframes dotAppear {
+    to { opacity: 1; }
+  }
+
+  @keyframes dotPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(243, 240, 107, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(243, 240, 107, 0);
+    }
+  }
+
+  /* Dismissed state — only the bubble hides, dot remains */
+  .wa-bubble.dismissed {
+    animation: waDismiss 0.4s forwards !important;
+    pointer-events: none;
+  }
+
+  @keyframes waDismiss {
+    to {
+      opacity: 0;
+      transform: scale(0.6) translateX(40px) translateY(-20px);
+    }
+  }
+
+  /* Toggled back open */
+  .wa-bubble.reopened {
+    animation: waReopen 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+    pointer-events: auto;
+  }
+
+  @keyframes waReopen {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes waDots {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-4px); }
+  }
+
+  @keyframes waTypingShow {
+    to { opacity: 1; }
+  }
+
+  @keyframes waTypingHide {
+    to { opacity: 0; transform: scale(0.8); }
+  }
+
+  @keyframes waTyping {
+    0%, 99% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes waPopIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) translateY(-10px);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.08) translateY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes waWiggle {
+    0%, 92%, 100% { transform: scale(1) rotate(0); }
+    94% { transform: scale(1.03) rotate(-1.5deg); }
+    96% { transform: scale(1.03) rotate(1.5deg); }
+    98% { transform: scale(1.03) rotate(0); }
+  }
+
+  .intro-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.01em;
+    margin-bottom: 70px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    position: relative;
+  }
+
+  .intro p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+
+  .intro p:last-of-type { margin-bottom: 0; }
+
+  .intro .serif-italic {
+    color: var(--white);
+  }
+
+  /* SECTION BASE */
+  section.block {
+    padding: 140px 40px;
+    position: relative;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+  .container-narrow { max-width: 820px; margin: 0 auto; }
+
+  .section-title {
+    font-family: 'DM Sans', sans-serif;
+    text-align: center;
+    font-size: clamp(40px, 5.5vw, 68px);
+    line-height: 1.05;
+    margin-bottom: 70px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .section-title .serif-italic {
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  .section-title .line-break {
+    display: block;
+  }
+
+  /* TWO PACKAGES */
+  .packages { background: var(--bg); }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 40px;
+  }
+
+  .package { position: relative; display: flex; flex-direction: column; }
+
+  .package-number {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-size: 72px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .package-label {
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .package-price {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: var(--red);
+    margin-bottom: 32px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .package-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+    flex-grow: 1;
+  }
+
+  /* CTA BUTTONS */
+  .cta-btn {
+    display: inline-block;
+    background: var(--yellow-btn);
+    color: var(--black);
+    padding: 14px 32px;
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background .3s, transform .2s;
+  }
+
+  .cta-btn:hover { background: #e8dc3a; transform: translateY(-1px); }
+
+  .cta-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--ink);
+    padding: 14px 32px;
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 999px;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+
+  .cta-btn-outline:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .cta-wrap {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  /* HOE HET WERKT — site-rood, haken-motief van de dienstenpagina's */
+  .werkwijze { background: var(--red); color: var(--white); }
+  .werkwijze .section-title { color: var(--white); margin-bottom: 80px; }
+  .werkwijze .section-title .serif-italic { color: var(--white); }
+
+  .wk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .wk-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .wk-label-text {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(24px, 2.3vw, 32px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .wk-item p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: .07em;
+    line-height: 1.9;
+    text-transform: uppercase;
+    color: var(--white);
+    max-width: 300px;
+  }
+
+  .wk-tip {
+    max-width: 1100px;
+    margin: 80px auto 0;
+    padding: 28px 0;
+    border-top: 1px solid rgba(255,255,255,.45);
+    border-bottom: 1px solid rgba(255,255,255,.45);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    letter-spacing: .06em;
+    line-height: 1.8;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: center;
+  }
+
+  .d1 { transition-delay: .10s; }
+  .d2 { transition-delay: .20s; }
+  .d3 { transition-delay: .30s; }
+
+  /* VAN ADVIES NAAR ACTIE */
+  .actie {
+    background: var(--warm-grey);
+    text-align: center;
+  }
+
+  .actie p.intro-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 720px;
+    margin: 0 auto 40px;
+  }
+
+  /* Status row inside actie */
+  .actie-status {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(17,17,17,0.1);
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #3fa05c;
+    margin-right: 10px;
+    animation: pulse 2s infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .status-row {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .actie-status p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto;
+    color: var(--ink-soft);
+  }
+
+  /* CHARMAINE BLOCK - full page width yellow, narrower content */
+  .charmaine-section {
+    background: var(--yellow);
+    padding: 70px 40px;
+    text-align: center;
+  }
+
+  .charmaine-section-inner {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .charmaine-section p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .charmaine-section .charmaine-quote {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .contact .section-title {
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .contact .section-title .serif-italic {
+    color: var(--white);
+  }
+
+  .contact-sub {
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    margin-bottom: 60px;
+    color: var(--white);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+
+  .form {
+    max-width: 680px;
+    margin: 0 auto;
+    display: grid;
+    gap: 28px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .form-field label {
+    display: block;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--white);
+    opacity: 0.75;
+    font-weight: 500;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(245, 241, 234, 0.3);
+    padding: 10px 0;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-bottom-color: var(--yellow);
+  }
+
+  .form-field select option {
+    background: var(--red-deep);
+    color: var(--white);
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .submit-wrap {
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .contact-direct {
+    text-align: center;
+    margin-top: 70px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(245, 241, 234, 0.2);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .contact-direct p { margin-bottom: 8px; }
+
+  /* FOOTER — zoals op de site (zonder knop en contactregels) */
+  footer { background: #ececeb; }
+  .footer-main {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 120px 60px 130px;
+    margin: 0 auto;
+    max-width: 1440px;
+  }
+  .footer-hook { line-height: 1; width: 100%; }
+  .footer-hook-line1 {
+    font-family: 'Noto Serif Display', serif; font-style: italic; font-weight: 400;
+    font-size: 110px; color: #8B0000;
+    display: block; text-align: left;
+    padding-left: clamp(80px, 12vw, 180px);
+  }
+  .footer-hook-line2 {
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    font-size: 110px; color: #8B0000;
+    display: block; text-align: right;
+    padding-right: clamp(80px, 12vw, 180px);
+    letter-spacing: .04em; margin-top: -24px; line-height: 1;
+  }
+  .footer-bar {
+    background: #111111;
+    display: flex; align-items: stretch; justify-content: space-between;
+    padding: 1rem 5%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: .1em;
+    color: rgba(245,240,232,.5);
+  }
+  .footer-bar a { color: inherit; text-decoration: none; transition: color .2s; }
+  .footer-bar a:hover { color: #F5F0E8; }
+
+  @media (max-width: 768px) {
+    .footer-main { padding: 80px 20px; }
+    .footer-hook { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .footer-hook-line1, .footer-hook-line2 { font-size: clamp(36px, 10vw, 64px); text-align: center; padding: 0; margin-top: 0; }
+    .footer-bar { flex-direction: column; gap: .5rem; text-align: center; }
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    animation: fadeIn 0.3s;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal {
+    background: var(--bg);
+    max-width: 780px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 70px 60px;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: 1px solid var(--ink);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .modal-eyebrow {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .modal-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    line-height: 1.05;
+  }
+
+  .modal-subtitle {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--red);
+    margin-bottom: 50px;
+  }
+
+  .modal-step {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .modal-step:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+  .modal-step-number {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-size: 36px;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .modal-step h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .modal-step p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .modal-note {
+    background: var(--warm-grey);
+    padding: 20px 24px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink);
+    border-left: 3px solid var(--red);
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero { padding: 100px 20px 80px; min-height: 60vh; }
+    .intro, section.block { padding: 90px 20px; }
+    .wa-wrap { top: 24px; right: 20px; }
+    .contact .section-title { font-size: 6.4vw; }
+    .wa-bubble .wa-msg { min-width: 140px; font-size: 13px; padding: 8px 12px 6px; }
+    .packages-grid { grid-template-columns: 1fr; gap: 50px; }
+    .wk-grid { grid-template-columns: 1fr; gap: 44px; }
+    .wk-item p { max-width: none; }
+    .wk-tip br { display: none; }
+    .form-row { grid-template-columns: 1fr; gap: 28px; }
+    .modal { padding: 60px 30px; }
+    .modal-close { top: 16px; right: 16px; }
+    .modal-step { grid-template-columns: 50px 1fr; gap: 20px; }
+    .charmaine-section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+
+<!-- NAVBAR (identiek aan de site) -->
+<header class="nav" id="nav">
+  <a href="../index.html" class="nav-logo">
+    <span class="logo-plain">MADEWITH</span><span class="logo-bold">MERAKI.</span>
+  </a>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="about.html">Over ons</a></li>
+      <li class="has-drop">
+        <a href="index.html#services">Diensten <span class="arrow">▾</span></a>
+        <div class="dropdown">
+          <a href="creative-visuals.html">Creatief &amp; Visuals</a>
+          <a href="photography.html">Fotografie</a>
+          <a href="social-media.html">Social Media</a>
+          <a href="marketing.html">Growth Marketing</a>
+        </div>
+      </li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="lang-switch">
+      <a href="../index.html" class="lang-link">EN</a>
+      <span class="lang-sep">|</span>
+      <span class="lang-active">NL</span>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mnav">
+  <ul>
+    <li><a href="about.html">Over ons</a></li>
+    <li><a href="index.html#services">Diensten</a></li>
+    <div class="m-sub">
+      <a href="creative-visuals.html">Creatief &amp; Visuals</a>
+      <a href="photography.html">Fotografie</a>
+      <a href="social-media.html">Social Media</a>
+      <a href="marketing.html">Growth Marketing</a>
+    </div>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="mobile-lang"><a href="../index.html" class="mobile-lang-link">EN</a><span class="mobile-lang-sep"> | </span><span class="mobile-lang-active">NL</span></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="hero-title">
+    ADVIES VOOR<br>
+    <span class="serif-italic">(startende)</span><br>
+    ZELFSTANDIG<br>
+    PROFESSIONALS
+  </h1>
+  <div class="hero-sub">POSITIONERING EN ONLINE ZICHTBAARHEID</div>
+</section>
+
+<!-- INTRO - layered typography with motion space -->
+<section class="intro">
+  <div class="intro-bg-word" aria-hidden="true">GEFELICITEERD</div>
+  <!-- WhatsApp-style message bubble with typing indicator -->
+  <div class="wa-wrap">
+  <div class="wa-typing" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="wa-bubble" aria-hidden="true">
+    <div class="wa-msg">
+      <div class="wa-text">Gefeliciteerd! 🎉</div>
+      <div class="wa-time">10:42 <span class="wa-check">✓✓</span></div>
+    </div>
+  </div>
+  <button class="wa-dismiss" aria-label="Verwijder bericht" onclick="dismissBubble()"></button>
+  </div>
+
+  <div class="intro-inner">
+    <h2>HET <span class="serif-italic">MOMENT</span> IS ER.</h2>
+    <p>Je hebt de stap gezet. Van werk naar ondernemerschap. Gefeliciteerd.<br>Een mooie beweging naar zelfstandigheid, maar nu komt de vraag; <span class="serif-italic">hoe nu verder?</span></p>
+    <p>Je weet wat je waard bent. Je weet waar je kracht ligt. Maar hoe vermarkt je jezelf?<br>Hoe positioneer je je online, zodat opdrachtgevers je weten te vinden?</p>
+    <p>Met het adviestraject dat bij jou past, brengen we daar structuur in.<br>Advies waar je mee verder kunt.</p>
+  </div>
+</section>
+
+<!-- TWO PACKAGES -->
+<section class="block packages">
+  <div class="container">
+    <h2 class="section-title reveal">Twee advies<span class="serif-italic">trajecten</span></h2>
+
+    <div class="packages-grid">
+      <div class="package reveal">
+        <div class="package-number">01</div>
+        <div class="package-label">Positioneringsadvies</div>
+        <div class="package-price">4 uur advies · € 340 excl. btw</div>
+        <div class="package-body">
+          Je merkt dat je elke keer een ander verhaal vertelt als iemand vraagt wat je doet. Niet omdat je het niet weet, wel omdat je nog niet scherp hebt hoe je jezelf positioneert. In dit traject maken we één verhaal dat klopt. En staat je verhaal stevig.
+        </div>
+        <button class="cta-btn-outline" onclick="openModal('positionering')">Bekijk alle stappen →</button>
+      </div>
+
+      <div class="package reveal">
+        <div class="package-number">02</div>
+        <div class="package-label">Zichtbaarheidsadvies</div>
+        <div class="package-price">6 uur advies · € 510 excl. btw</div>
+        <div class="package-body">
+          Jouw positionering is de basis. Alleen; een scherpe positionering zonder zichtbaarheid levert geen opdrachten op. Dit traject bouwt beide; je verhaal én zichtbaarheid. Zodat opdrachtgevers direct weten waar jouw kracht ligt, en je ook écht weten te vinden.
+        </div>
+        <button class="cta-btn-outline" onclick="openModal('zichtbaarheid')">Bekijk alle stappen →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOE HET WERKT -->
+<section class="block werkwijze">
+  <div class="container">
+    <h2 class="section-title reveal">
+      <span class="line-break">Hoe het</span>
+      <span class="line-break serif-italic">werkt</span>
+    </h2>
+
+    <div class="wk-grid">
+      <div class="wk-item reveal d1">
+        <div class="wk-label"><span class="wk-label-text">4 tot 8 weken</span></div>
+        <p>Het advies wordt verdeeld over een doorlooptijd van vier tot acht weken, zodat het meebeweegt met het moment waarop je start.</p>
+      </div>
+      <div class="wk-item reveal d2">
+        <div class="wk-label"><span class="wk-label-text">Evaluatie</span></div>
+        <p>Het evaluatiegesprek volgt vier tot zes weken daarna.</p>
+      </div>
+      <div class="wk-item reveal d3">
+        <div class="wk-label"><span class="wk-label-text">Een stevig fundament</span></div>
+        <p>Jouw verhaal, uitgeschreven in een adviesdocument. Een naslagwerk dat je altijd weer kunt inzetten; ook als jij verandert, blijft de blauwdruk dezelfde.</p>
+      </div>
+    </div>
+
+    <p class="wk-tip reveal">Werk je samen met een loopbaancoach of zit je in een outplacementtraject?<br>Dan is er een grote kans dat je opdrachtgever<br>dit advies meeneemt in jouw traject.<br>Vraag naar de mogelijkheden.</p>
+  </div>
+</section>
+
+<!-- VAN ADVIES NAAR ACTIE (status merged in) -->
+<section class="block actie">
+  <div class="container-narrow">
+    <h2 class="section-title reveal">Van advies naar <span class="serif-italic">actie</span></h2>
+    <p class="intro-text reveal">Het advies sluit af met wat je zelf kunt oppakken, en waarvoor je misschien iemand nodig hebt. Wil je die stappen samen met mij maken, je profiel schrijven, content opzetten, een website bouwen, dan ontvang je daar een apart voorstel voor.</p>
+
+    <div class="cta-wrap reveal">
+      <a href="#contact" class="cta-btn">Plan een kennismakingsgesprek →</a>
+    </div>
+
+    <!-- Status integrated here -->
+    <!--
+      Pas handmatig aan bij wisselende status:
+      OPEN: dot groen (#3fa05c) + "Er is plek voor nieuwe klanten..."
+      BIJNA VOL: dot oranje (#d97706) + "Nog één plek beschikbaar..."
+      VOL: dot rood (#8f0d0d) + "Momenteel zit ik vol..."
+    -->
+    <div class="actie-status reveal">
+      <div class="status-row">
+        <span class="status-dot"></span>
+        STATUS: OPEN
+      </div>
+      <p>Er is plek voor nieuwe klanten. Vul het formulier in en we plannen een kennismakingsgesprek.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block contact" id="contact">
+  <div class="container-narrow">
+    <h2 class="section-title reveal">
+      <span class="line-break">Plan een</span>
+      <span class="line-break serif-italic">kennismakingsgesprek</span>
+    </h2>
+    <p class="contact-sub reveal">Gratis en vrijblijvend. We bespreken je situatie en of een van beide trajecten bij je past.</p>
+
+    <form class="form reveal" id="adviesform" action="https://formspree.io/f/mzdjdgbo" method="POST">
+      <input type="hidden" name="_subject" value="Aanvraag kennismakingsgesprek (adviespagina)">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Naam</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-field">
+          <label>E-mail</label>
+          <input type="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>Telefoon</label>
+          <input type="tel" name="phone">
+        </div>
+        <div class="form-field">
+          <label>Huidige situatie</label>
+          <select name="situation">
+            <option value="">Selecteer</option>
+            <option>Werk naar ondernemerschap</option>
+            <option>Al gestart</option>
+            <option>Anders</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Welk advies past bij je?</label>
+        <select name="advice">
+          <option value="">Selecteer</option>
+          <option>Positioneringsadvies</option>
+          <option>Zichtbaarheidsadvies</option>
+          <option>Weet ik nog niet</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Toelichting</label>
+        <textarea name="message" rows="4" placeholder="Vertel kort over je situatie..."></textarea>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="cta-btn" id="adviesSubmit">Verstuur aanmelding →</button>
+      </div>
+    </form>
+
+    <div class="contact-direct">
+      <p>Of neem direct contact op</p>
+      <p>HELLO@MADEWITHMERAKI.NL</p>
+      <p>+31 6 44 92 86 37</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <!-- CHARMAINE — geel blok boven Let's create TOGETHER -->
+  <section class="charmaine-section">
+    <div class="charmaine-section-inner reveal">
+      <p>Made With Meraki is de studio van Charmaine Pourier.<br>Vanuit de studio werkt zij aan merkpositionering, social media en content, en adviseert zij onder meer freelancers en ondernemers over hoe zij zichzelf vermarkten.</p>
+      <p class="charmaine-quote">Waar strategie en creativiteit elkaar vinden.</p>
+    </div>
+  </section>
+  <div class="footer-main">
+    <div class="footer-hook reveal">
+      <span class="footer-hook-line1">Let's create</span>
+      <span class="footer-hook-line2">TOGETHER</span>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>2026 MADE WITH MERAKI.</span>
+    <span><a href="../Terms-and-Conditions-Made-with-Meraki.pdf" target="_blank" rel="noopener">ALGEMENE VOORWAARDEN</a></span>
+    <span><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">TERUG NAAR BOVEN</a></span>
+  </div>
+</footer>
+
+<!-- MODAL: POSITIONERINGSADVIES -->
+<div class="modal-overlay" id="modal-positionering" onclick="closeOnBackdrop(event, 'positionering')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('positionering')" aria-label="Sluit">✕</button>
+    <div class="modal-eyebrow">4 UUR ADVIES · € 340 EXCL. BTW</div>
+    <div class="modal-title">Positioneringsadvies</div>
+    <div class="modal-subtitle">In 5 stappen een verhaal dat klopt</div>
+
+    <div class="modal-step">
+      <div class="modal-step-number">01</div>
+      <div>
+        <h4>Voorbereiding</h4>
+        <p>Je stuurt vooraf je cv, je online profielen en eventueel het materiaal uit je loopbaantraject, zoals persoonlijkheidsprofielen.</p>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-step-number">02</div>
+      <div>
+        <h4>Positioneringsgesprek van 90 minuten</h4>
+        <p>We bespreken je specialisme, je kernboodschap, je kernwaarden, wie je bent als persoon en de unieke combinatie van achtergrond en ervaring waarin je verschilt van anderen met hetzelfde profiel.</p>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-step-number">03</div>
+      <div>
+        <h4>Gap analyse</h4>
+        <p>Het verschil tussen hoe je nu overkomt en hoe je gezien wilt worden, en wat er nodig is om dat te overbruggen.</p>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-step-number">04</div>
+      <div>
+        <h4>Positioneringsdocument</h4>
+        <p>Je kernboodschap, je onderscheidend vermogen, voor wie je werkt en welk vraagstuk je oplost, en waar je begint.</p>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-step-number">05</div>
+      <div>
+        <h4>Adviesgesprek</h4>
+        <p>We lopen het document door, scherpen aan waar nodig en bepalen je eerste stappen.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ZICHTBAARHEIDSADVIES -->
+<div class="modal-overlay" id="modal-zichtbaarheid" onclick="closeOnBackdrop(event, 'zichtbaarheid')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('zichtbaarheid')" aria-label="Sluit">✕</button>
+    <div class="modal-eyebrow">6 UUR ADVIES · € 510 EXCL. BTW</div>
+    <div class="modal-title">Zichtbaarheidsadvies</div>
+    <div class="modal-subtitle">Positionering plus de stappen om zichtbaar te worden</div>
+
+    <div class="modal-note">
+      Zichtbaarheidsadvies bevat alle vijf de stappen van het Positioneringsadvies (01 t/m 05) en is uitgebreid met de volgende vier stappen.
+    </div>
+
+    <div class="modal-step">
+      <div class="modal-step-number">06</div>
+      <div>
+        <h4>Marktverkenning</h4>
+        <p>Je brengt zelf in kaart hoe vergelijkbare experts zich online presenteren. We nemen je bevindingen samen door.</p>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-step-number">07</div>
+      <div>
+        <h4>LinkedIn advies</h4>
+        <p>Advies op je LinkedIn-account. Wat je headline hoort te communiceren, hoe je about is opgebouwd, welk bewijs waar hoort en hoe je overkomt op toekomstige opdrachtgevers.</p>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-step-number">08</div>
+      <div>
+        <h4>Contentrichting</h4>
+        <p>Het advies bevat drie tot vier content thema's waar jij veel over kunt delen. In welke vorm en met welke consistentie. We bekijken of een website in jouw situatie iets toevoegt en je ontvangt een advies.</p>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-step-number">09</div>
+      <div>
+        <h4>Evaluatiegesprek na je start</h4>
+        <p>We reflecteren aan de hand van je cijfers op wat werkt en sturen bij waar nodig.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function dismissBubble() {
+    const bubble = document.querySelector('.wa-bubble');
+    const typing = document.querySelector('.wa-typing');
+    if (typing) typing.style.display = 'none';
+
+    if (bubble.classList.contains('dismissed')) {
+      // Re-open
+      bubble.classList.remove('dismissed');
+      bubble.classList.add('reopened');
+    } else {
+      // Dismiss
+      bubble.classList.remove('reopened');
+      bubble.classList.add('dismissed');
+    }
+  }
+
+  function openModal(type) {
+    document.getElementById('modal-' + type).classList.add('active');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal(type) {
+    document.getElementById('modal-' + type).classList.remove('active');
+    document.body.classList.remove('modal-open');
+  }
+
+  function closeOnBackdrop(event, type) {
+    if (event.target.classList.contains('modal-overlay')) {
+      closeModal(type);
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(m => {
+        m.classList.remove('active');
+      });
+      document.body.classList.remove('modal-open');
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  /* nav, mobiel menu en cursor — zelfde gedrag als de site */
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  const ham = document.getElementById('ham'), mnav = document.getElementById('mnav');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); mnav.classList.toggle('open'); });
+  document.addEventListener('click', e => {
+    if (!navEl.contains(e.target) && !mnav.contains(e.target)) { ham.classList.remove('open'); mnav.classList.remove('open'); }
+  });
+  const cur = document.getElementById('cur');
+  document.addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; }, { passive: true });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('big'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+  });
+  if ('ontouchstart' in window) cur.style.display = 'none';
+
+  /* formulier — Formspree, zoals het contactformulier op de home */
+  document.getElementById('adviesform').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target, btn = document.getElementById('adviesSubmit');
+    if (!form.reportValidity()) return;
+    btn.textContent = 'VERZENDEN...'; btn.disabled = true;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { btn.textContent = 'VERZONDEN ✓'; form.reset(); }
+      else { btn.textContent = 'FOUT, PROBEER OPNIEUW'; btn.disabled = false; }
+    } catch { btn.textContent = 'FOUT, PROBEER OPNIEUW'; btn.disabled = false; }
+  });
+</script>
+
+</body>
+</html>
